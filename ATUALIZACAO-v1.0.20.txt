@@ -1,0 +1,31 @@
+MULTIVERSO RPG — v1.0.20 — DEFESAS E REAÇÕES DE NPCs
+
+NOVO NA ABA COMBATE
+- Bloqueio: cartão com rolagem do motor nativo, incluindo bônus de armaduras equipadas e passivas fixas.
+- Esquiva: cartão com rolagem do motor nativo, incluindo efeitos aplicáveis.
+- Reações: contador individual, clique para gastar, botão direito ou Shift+clique para recuperar.
+- Ao realizar uma defesa válida em combate, uma Reação é gasta automaticamente.
+
+NPCs SEM TURNO NA INICIATIVA
+- O NPC pode defender-se mesmo sem estar no rastreador de iniciativa.
+- Suas duas Reações individuais recarregam quando começa uma nova rodada do combate.
+- Se for colocado na iniciativa, conserva a regra antiga de recarga no começo do próprio turno.
+- Ações de Apoio da Party continuam distintas e controladas manualmente pelo mestre.
+
+ITENS E PASSIVAS
+- O valor visível do Bloqueio e da Esquiva usa o mesmo cálculo fixo da rolagem.
+- Armadura precisa estar equipada, com quantidade > 0 e proteção configurada no motor de itens.
+- Efeitos condicionais e escolhas situacionais continuam sendo resolvidos no teste, sem inflar o valor fixo do cartão.
+
+MANTIDO
+- PV, STA, Mana, SAN, inventário, diários, Afinidades, Party, Criação e habilidades.
+
+TESTE PRÁTICO
+1. Inicie combate com jogadores, mantendo um NPC aliado fora da iniciativa.
+2. Equipe armadura configurada para +2 em Bloqueio. Verifique o cartão.
+3. Clique em Bloqueio e role: deve gastar uma Reação do NPC.
+4. Role Esquiva: deve gastar a segunda. Uma terceira defesa deve ser bloqueada.
+5. Avance a rodada: o contador deve voltar a 2/2.
+6. Use botão direito na Reação para recuperar manualmente uma, se necessário.
+
+Faça backup antes de substituir arquivos do sistema; não instale duas versões do mesmo sistema simultaneamente.

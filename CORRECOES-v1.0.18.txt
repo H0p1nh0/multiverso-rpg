@@ -1,0 +1,21 @@
+MULTIVERSO RPG v1.0.18 — CORREÇÃO VISUAL DO INVENTÁRIO DE NPCs
+
+- Removida a repetição do retrato, nome e categoria do NPC dentro do inventário.
+  Essas informações continuam disponíveis no cabeçalho principal da ficha.
+- Reorganizados os cartões de Capacidade de Carga e Moedas em duas colunas.
+- Corrigidos os estilos que faziam a barra, o texto do cálculo e o botão de
+  bônus extra se sobreporem.
+- Cálculo da capacidade exibido em indicadores individuais: Base, Força,
+  Armazenamento, Outras fontes e Condições.
+- Criado layout responsivo baseado na largura real da ficha (container queries),
+  inclusive para filtros, lista de itens e painel de detalhes.
+- Mantidos dados e funções de inventário: itens, moedas, equipar, usar,
+  transferir, descartar e Motor de Efeitos.
+- Sem mudanças nos demais painéis, nos cálculos de Fluxos e nas fichas de PJ.
+
+TESTE NO FOUNDRY
+1. Substituir o sistema pela versão 1.0.18 e recarregar com Ctrl+F5.
+2. Abrir um NPC e a aba Inventário: apenas Carga e Moedas no topo.
+3. Testar Bônus extra e Adicionar moeda.
+4. Criar um equipamento, equipar, abrir detalhes, usar e salvar.
+5. Redimensionar a ficha, verificando se os cartões deixam de se sobrepor.

@@ -1,0 +1,14 @@
+MULTIVERSO RPG v1.0.6 — Ajustes visuais do Gerenciador de Equipes
+
+- Corrigido o botão Gerenciar Equipe na aba Journals: largura total e margens horizontais.
+- Corrigida a janela de cadastro: estilos agora se aplicam ao conteúdo do DialogV2,
+  sem depender de uma classe no elemento externo da janela.
+- CSS versionado e carregado explicitamente pelo módulo para evitar que o cache
+  do manifesto do Foundry impeça a aplicação do novo layout.
+- Diálogo em tamanho mais compacto, com cabeçalho, formulário, lista e detalhes
+  distribuídos em painéis próprios e texto legível.
+- Nenhuma mudança no armazenamento de equipes nem no motor de habilidades,
+  combate, inventário ou efeitos. A chave de dados partyRegistryV1 foi preservada.
+
+Validação: testes de cadastro e integridade local. A aparência final no Foundry
+precisa ser confirmada pelo mestre.

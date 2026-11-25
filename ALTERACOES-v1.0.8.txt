@@ -1,0 +1,24 @@
+MULTIVERSO RPG — v1.0.8 — DIÁRIOS AUTOMÁTICOS
+
+Base: v1.0.7 aprovada pelo mestre.
+
+NOVO
+- Criar automaticamente um Journal «Diário — Nome do Personagem» ao criar um Actor do tipo «personagem».
+- Colocar o diário na pasta Diários, reutilizando «Diarios» ou «Diários» já existentes (sem duplicar pasta).
+- Criar uma página inicial em branco («Primeira página»).
+- Reproduzir a propriedade da ficha: somente jogadores com permissão Owner na ficha recebem Owner no diário; outros não têm acesso. Mestre mantém administração.
+- Sincronizar nome e propriedade ao renomear personagem ou trocar permissões na ficha.
+- Identificar o vínculo por IDs/flags persistentes, sem criar diários duplicados e sem roubar o diário de um clone.
+- Apenas o GM principal ativo efetua as alterações, evitando corridas entre vários mestres conectados.
+- Os Journals anteriores feitos manualmente são preservados: não são adotados, editados, apagados ou migrados automaticamente.
+- Ao abrir o mundo, diários AUTOMÁTICOS já vinculados são verificados e resincronizados (sem criar novos para atores preexistentes).
+
+NÃO INCLUÍDO NESTA ETAPA
+- Botão Afinidades dentro do Journal (próxima etapa).
+- Criação retroativa de Journals para atores existentes antes da v1.0.8; será feita em uma etapa separada e com cuidado para não duplicar diários manuais.
+- Alteração do Gerenciador de Equipes ou de qualquer motor de combate.
+
+VALIDAÇÃO
+- Testes locais (não substituem teste na interface real do Foundry): cadastro, vinculação, duplicidade, clone, troca de dono, renomeação, hooks, GM único e preservação de Journals anteriores.
+- Testes de regressão da Party e do motor existentes.
+- Sintaxe JavaScript verificada.

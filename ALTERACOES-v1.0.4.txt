@@ -1,0 +1,40 @@
+MULTIVERSO RPG — v1.0.4 | REMOÇÃO DA EXCEÇÃO HOSHUKO
+=======================================================
+Base: v1.0.3 enviada e testada por Hope (diagnóstico de efeitos compostos).
+
+O QUE FOI ALTERADO
+- Removido integralmente module/hoshuko.mjs e seu registro no main.mjs.
+- Removidas as chamadas exclusivas ao nome Hoshuko do painel de Habilidades.
+- O botão Usar volta a aparecer em TODAS as Técnicas/Skills configuradas, inclusive com o nome Hoshuko.
+- Os botões individuais passam a respeitar somente o campo geral "Botão individual de uso na ficha" no editor.
+- Cada clique em um efeito individual agora usa o executor genérico da habilidade, sem desvio por nome.
+- Retirado o aviso exclusivo de penalidade da Hoshuko na confirmação de ataque do mestre.
+- Nenhum outro módulo de mecânica de combate, dano, itens ou habilidade foi modificado.
+- Nenhuma ficha, item ou dado dos mundos é alterado pelo instalador.
+
+LIMITES IMPORTANTES
+- A remoção elimina também a automação ESPECIAL de Marca de Pressão e Retaliação.
+- O motor genérico AINDA NÃO implementa integralmente marca vinculada, gatilho de dano a terceiro,
+  penalidade automática de -2 condicional, retaliação no turno seguinte, nem distância dinâmica.
+- Uma Técnica nomeada "Hoshuko" agora usa exatamente os efeitos que estiverem cadastrados nela.
+  Se estiver com efeitos da "Investida Cortante" configurados, executará ESSES efeitos, não a
+  mecânica original da Hoshuko descrita no texto.
+- Para uma habilidade com efeitos diferentes em Ação Livre e Ação Bônus, o uso conjunto continua
+  incompatível. A solução correta virá no motor universal, nunca por nome específico.
+- Flags antigas gravadas no mundo pelo módulo Hoshuko não são mais consultadas; não são apagadas.
+
+TESTES NO FOUNDRY (em CÓPIA do mundo ou personagem de testes)
+1. Verifique se a Técnica Hoshuko mostra o botão genérico "Usar" no painel Habilidades.
+2. Abra "Testar habilidade" na Técnica Hoshuko: confira que aparece apenas a configuração
+   realmente cadastrada nos efeitos, sem janelas "Marca de Pressão" específicas.
+3. Em outra Técnica genérica, ative e desative "Botão individual de uso na ficha" num efeito.
+   O botão deve aparecer/desaparecer conforme a configuração, independentemente do nome.
+4. Em um teste de combate, confirmar acerto NÃO deve abrir o aviso especial de Hoshuko.
+5. Faça um uso real somente com efeitos/recursos de teste e com cadastro coerente; confirme custos
+   e resultados. Se aparecer comportamento diferente, anote print para a próxima correção.
+6. Confirme que Skills e Técnicas comuns continuam funcionando.
+
+VERIFICAÇÕES LOCAIS
+- Sintaxe dos arquivos JS, resolução de imports, testes de rota de execução da v1.0.3.
+- Teste de remoção de referências exclusivas ao nome Hoshuko em código de execução.
+- Integridade do ZIP. Não substituem teste no Foundry.

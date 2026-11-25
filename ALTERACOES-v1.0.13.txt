@@ -1,0 +1,45 @@
+MULTIVERSO RPG v1.0.13 — FICHA RÁPIDA DE NPCs
+Base preservada: v1.0.12 — Afinidades com bolinhas.
+
+NOVO TIPO DE ATOR
+- "NPC" aparece como tipo próprio na criação de Ator.
+- Ficha exclusiva de NPC, separada da ficha "Personagem" dos jogadores.
+- Sem criação automática de Diário para NPC; Party/Diários/Afinidades existentes não foram alterados.
+
+CRIAÇÃO DE NPC
+- Cinco categorias: Comum, Experiente, Especialista, Elite e Lendário.
+- Pontos de atributos: 15 / 25 / 35 / 50 / 70.
+- Limites recomendados por atributo: 1-5 / 2-8 / 3-11 / 4-16 / 5-24.
+- Treinamentos: 2 / 3 / 4 / 5 / 7 (bônus fixo +2).
+- Pontos de especialização: 1 / 3 / 5 / 8 / 12.
+- Limites recomendados por perícia: +1 / +2 / +3 / +4 / +5.
+- Habilidades próprias recomendadas: 1 / 2 / 3 / 5 / 8.
+- 22 perícias com fórmula piso(atributo / 2) + treinamento + especialização.
+- Arcana e Encantamento usam Inteligência; Intuição usa Percepção; Cortantes seleciona Força ou Agilidade.
+- Avisos de criação fora dos padrões, sem bloquear personalizações de chefes.
+- Botão de distribuição sugerida dos atributos (com confirmação).
+
+FLUXOS
+- Categoria determina bases e multiplicador de x2 a x7, conforme documento aprovado.
+- PV = base + RES × multiplicador.
+- STA = base + Atletismo × multiplicador.
+- Mana = base + Arcana × multiplicador.
+- SAN = base + Vontade × multiplicador.
+- STA e Mana coexistem no mesmo NPC.
+- Máximos derivados automaticamente, com opção de ajuste manual independente.
+- Campos atuais editáveis e comando de restaurar os quatro Fluxos.
+- Ao criar um NPC novo, os recursos atuais iniciam preenchidos.
+
+COMBATE E HABILIDADES
+- Aba Combate com recursos, tabela rápida de perícias e habilidades recolhíveis.
+- Cadastro simples de habilidades normais com nome, ação, custo em PV/STA/Mana/SAN, descrição e fórmulas opcionais de teste/dano.
+- Botão "Usar" registra a habilidade no chat, desconta recurso e executa apenas fórmulas informadas pelo mestre.
+- Aba separada para cadastrar Ações de Apoio próprias do NPC, com texto dos níveis de Admiração 0,1,2,3.
+- A reserva coletiva de apoios NÃO é automatizada neste pacote; o mestre continua controlando até 3 por rodada.
+- Edição restrita ao GM; retrato e anotações rápidas.
+
+VERIFICAÇÕES
+- Testes das 5 categorias, 22 perícias, 3 NPCs de exemplo, fórmulas e sobrescritas.
+- Teste isolado do modelo de dados, classe da ficha e criação automática dos recursos.
+- Testes antigos de Afinidades, Party, Diários e habilidades especiais sem regressão.
+- Falta validar a interface dentro do Foundry VTT 14 (não disponível no ambiente de testes).

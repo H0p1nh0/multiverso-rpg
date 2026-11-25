@@ -1,0 +1,104 @@
+/* Ficha NPC v1.0.13 • estilos confinados à ficha NPC; não interferir na ficha dos jogadores. */
+.multiverso-npc-window{--npc-fg:#e9e9f5;--npc-soft:#aab0c6;--npc-gold:#e4bb68;--npc-line:#35374d;--npc-bg:#191b2a;--npc-card:#242638;--npc-input:#181a29;min-width:390px}
+.multiverso-npc-window .window-content{padding:0!important;overflow:auto;background:#171927;color:var(--npc-fg)}
+.mv-npc{box-sizing:border-box;min-height:100%;padding:0 18px 20px;font-family:inherit;font-size:14px;color:var(--npc-fg)}
+.mv-npc *{box-sizing:border-box}
+.mv-npc button,.mv-npc input,.mv-npc select,.mv-npc textarea{font-family:inherit}
+.mv-npc button{cursor:pointer}
+.mv-npc button:disabled{opacity:.45;cursor:not-allowed}
+.mv-npc-hero{display:flex;align-items:center;gap:17px;border-bottom:1px solid var(--npc-line);padding:19px 4px 16px}
+.mv-npc-portrait{width:76px;height:76px;flex:0 0 76px;position:relative;border:2px solid #665479;border-radius:13px;overflow:hidden}
+.mv-npc-portrait img{width:100%;height:100%;object-fit:cover}
+.mv-npc-portrait button{position:absolute;bottom:0;right:0;background:#171927e8;border:0;color:white;padding:5px 7px;font-size:12px}
+.mv-npc-identity{flex:1;min-width:150px;display:grid;gap:5px}
+.mv-npc-eyebrow{font-weight:800;font-size:10px;letter-spacing:.13em;color:var(--npc-gold)}
+.mv-npc-name{font-size:25px!important;font-weight:800!important;line-height:1.2!important;width:100%!important;color:var(--npc-fg)!important;background:transparent!important;border:0!important;box-shadow:none!important;padding:2px 0!important;height:auto!important}
+.mv-npc-subtitle{display:flex;gap:7px;flex-wrap:wrap;align-items:center;font-size:11px;color:var(--npc-soft)}
+.mv-npc-subtitle>*{padding:4px 7px;background:#292b40;border-radius:5px}
+.mv-npc-tag{color:var(--npc-gold)!important;font-weight:bold}
+.mv-npc-hero-tools{display:flex;flex-direction:column;gap:9px;align-items:end;font-size:11px;color:var(--npc-soft)}
+.mv-npc-hero-tools button,.mv-npc-add,.mv-npc-secondary{border:1px solid #55516c;border-radius:7px;background:#343149;color:var(--npc-fg);min-height:30px;padding:7px 12px}
+.mv-npc-tabs{display:flex;gap:8px;margin:15px 0 16px;border-bottom:1px solid var(--npc-line);padding-bottom:9px;flex-wrap:wrap}
+.mv-npc-tabs button{border:1px solid transparent;border-radius:8px;padding:9px 14px;background:transparent;color:var(--npc-soft);font-weight:800;font-size:12px;min-width:110px}
+.mv-npc-tabs button.is-active{background:#39334b;color:#ffe1aa;border-color:#6b5367}
+.mv-npc-panel[hidden]{display:none!important}
+.mv-npc-main{min-width:0}
+.mv-npc-flux-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-bottom:15px}
+.mv-npc-flux{padding:12px 15px;border:1px solid var(--npc-line);border-radius:11px;background:var(--npc-card);border-top:3px solid var(--npc-fg);min-width:0}
+.mv-npc-flux-pv{border-top-color:#e0697c}.mv-npc-flux-sta{border-top-color:#51b5d3}.mv-npc-flux-pm{border-top-color:#a492e6}.mv-npc-flux-san{border-top-color:#6fc69b}
+.mv-npc-flux-title{display:flex;align-items:center;gap:7px;text-transform:uppercase;font-size:11px;color:var(--npc-soft);font-weight:800}
+.mv-npc-flux-values{display:flex;align-items:center;gap:6px;margin-top:8px;white-space:nowrap}
+.mv-npc-flux-values input{width:75px;min-width:0;font-weight:800!important;font-size:25px!important;height:auto!important;border:0!important;background:transparent!important;padding:1px!important;color:var(--npc-fg)!important}
+.mv-npc-flux-values span{font-size:19px;color:#a8a5b5;font-weight:700}
+.mv-npc-combat-columns{display:grid;grid-template-columns:minmax(255px,.78fr) minmax(300px,1.22fr);gap:13px;align-items:start}
+.mv-npc-card{background:var(--npc-card);padding:14px;border:1px solid var(--npc-line);border-radius:11px;min-width:0;margin-bottom:13px}
+.mv-npc-card h3{margin:0;font-size:14px;line-height:1.4;font-weight:800;color:#f4e4ca}
+.mv-npc-card-head{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:13px;flex-wrap:wrap}
+.mv-npc-card-head>span{font-size:11px;color:var(--npc-soft)}
+.mv-npc-skills-quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 12px}
+.mv-npc-skill-line{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:12px;padding:6px 4px;border-bottom:1px solid #34364a}
+.mv-npc-skill-line b{color:#c5d4ff;font-variant-numeric:tabular-nums}
+.mv-npc-ability{border:1px solid #393a51;border-radius:8px;background:#202133;margin-bottom:8px;overflow:hidden}
+.mv-npc-ability summary{cursor:pointer;display:flex;align-items:center;gap:8px;padding:12px;list-style:none}
+.mv-npc-ability summary::-webkit-details-marker{display:none}
+.mv-npc-ability summary:before{content:'▸';color:var(--npc-gold)}
+.mv-npc-ability[open] summary:before{content:'▾'}
+.mv-npc-ability-name{font-weight:800;flex:1;min-width:0;overflow-wrap:anywhere}
+.mv-npc-cost,.mv-npc-action-tag{padding:3px 5px;font-size:10px;background:#39354b;border-radius:5px;color:#e8caa8;white-space:nowrap}
+.mv-npc-ability>p,.mv-npc-ability>small{display:block;margin:7px 12px;font-size:12px;line-height:1.45;color:#d0d0e1;white-space:pre-wrap;overflow-wrap:anywhere}
+.mv-npc-ability-description{color:#aab0c6!important}
+.mv-npc-ability-controls{display:flex;gap:7px;align-items:center;padding:10px 12px;border-top:1px solid #393a51;flex-wrap:wrap}
+.mv-npc-ability-controls button{min-height:28px;border:1px solid #4a4b61;border-radius:6px;color:var(--npc-fg);background:#37384f;padding:4px 10px;font-size:12px}
+.mv-npc-ability-controls button.mv-npc-primary{background:#4c3f68;border-color:#795e91}
+.mv-npc-add{width:100%;margin-top:5px;border-style:dashed;min-height:34px}
+.mv-npc-empty,.mv-npc-hint{color:var(--npc-soft);font-size:12px;line-height:1.5;margin:5px 0 12px}
+.mv-npc-note textarea,.mv-npc-card textarea{min-height:70px}
+.mv-npc input:not(.mv-npc-name):not([type=checkbox]),.mv-npc select,.mv-npc textarea{max-width:100%;border:1px solid #46465d;border-radius:6px;background:var(--npc-input);color:var(--npc-fg);padding:6px 8px;box-shadow:none}
+.mv-npc input:not(.mv-npc-name):focus,.mv-npc select:focus,.mv-npc textarea:focus{outline:1px solid var(--npc-gold);border-color:var(--npc-gold)}
+.mv-npc input[readonly]{opacity:.8}
+.mv-npc textarea{width:100%;resize:vertical}
+.mv-npc-creation-intro{padding:8px 3px 14px;color:var(--npc-soft)}
+.mv-npc-creation-intro h3{margin:0 0 4px;color:var(--npc-fg);font-size:16px}.mv-npc-creation-intro p{margin:0;line-height:1.5;font-size:12px}
+.mv-npc-fields-row{display:flex;align-items:end;gap:12px;flex-wrap:wrap}.mv-npc-fields-row label{display:flex;flex-direction:column;gap:5px;font-size:12px;flex:1;min-width:160px}
+.mv-npc-fields-row button{flex:0 1 auto}
+.mv-npc-attrs-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px}
+.mv-npc-attrs-grid label{border:1px solid #393a51;border-radius:8px;padding:8px;display:flex;align-items:center;flex-direction:column;gap:5px;font-weight:700;font-size:11px;text-align:center}
+.mv-npc-attrs-grid input{width:100%;text-align:center;font-size:18px!important;font-weight:800!important;height:35px}
+.mv-npc-attrs-grid small{font-size:10px;color:var(--npc-soft);font-weight:normal}
+.mv-npc-cut-label{display:flex;gap:10px;align-items:center;font-size:12px;margin-bottom:12px}.mv-npc-cut-label select{max-width:145px}
+.mv-npc-skill-editor{width:100%}.mv-npc-skill-editor-head,.mv-npc-skill-editor-row{display:grid;grid-template-columns:minmax(150px,1fr) 70px 120px 55px;gap:8px;align-items:center;text-align:center;padding:6px 8px;border-bottom:1px solid #38394d;font-size:12px}
+.mv-npc-skill-editor-head{background:#312e43;font-size:11px;color:#d5d3e4;font-weight:800}
+.mv-npc-skill-editor-row>span{text-align:left}.mv-npc-skill-editor-row small{color:var(--npc-soft)}
+.mv-npc-skill-editor-row label{display:grid;place-items:center}.mv-npc-skill-editor-row input[type=number]{width:70px;justify-self:center;text-align:center}
+.mv-npc-skill-editor-row strong{color:#c5d4ff}
+.mv-npc-overrides{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.mv-npc-overrides label{display:grid;gap:5px;font-size:12px}.mv-npc-overrides small{color:var(--npc-soft)}
+.mv-npc-warning{border:1px solid #9b7045;background:#4a352b;border-radius:9px;padding:12px;margin-bottom:14px;font-size:12px}.mv-npc-warning h3{margin:0 0 5px;color:#ffd49d;font-size:14px}.mv-npc-warning p{margin:4px 0}
+.mv-npc-support-levels{padding:4px 12px 10px}.mv-npc-support-levels p{font-size:12px;color:#d1d0e4;line-height:1.45;border-top:1px solid #37384a;padding:8px 0;margin:0;white-space:pre-wrap}
+.mv-npc-ability-edit{display:grid;gap:12px;max-height:65vh;overflow:auto;padding:6px}.mv-npc-ability-edit label{display:grid;gap:4px;font-weight:700;font-size:12px}.mv-npc-ability-edit input,.mv-npc-ability-edit textarea,.mv-npc-ability-edit select{width:100%;border:1px solid #666;background:#242437;color:inherit;padding:7px;border-radius:5px}.mv-npc-ability-edit p{font-size:12px;opacity:.85;line-height:1.5}.mv-npc-dialog-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(max-width:800px){.mv-npc-combat-columns{grid-template-columns:1fr}.mv-npc-attrs-grid{grid-template-columns:repeat(3,1fr)}.mv-npc-flux-grid{grid-template-columns:repeat(2,1fr)}.mv-npc-hero-tools{display:none}}
+@media(max-width:520px){.mv-npc{padding:0 10px 14px}.mv-npc-attrs-grid{grid-template-columns:repeat(2,1fr)}.mv-npc-portrait{width:55px;height:55px;flex-basis:55px}.mv-npc-name{font-size:20px!important}.mv-npc-skill-editor-head,.mv-npc-skill-editor-row{grid-template-columns:minmax(100px,1fr) 56px 76px 42px;gap:3px;padding:6px 1px}.mv-npc-skill-editor-row input[type=number]{width:60px}.mv-npc-skills-quick{grid-template-columns:1fr}.mv-npc-overrides{grid-template-columns:repeat(2,1fr)}}
+
+/* v1.0.14: atributos e tipo visíveis, testes clicáveis e motor de apoio */
+.mv-npc-header-config{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:3px}
+.mv-npc-header-config label{display:grid;gap:4px;font-size:11px;color:var(--npc-soft);min-width:120px}
+.mv-npc-header-config select{background:#292b40!important;color:var(--npc-fg)!important;border:1px solid #52506a!important;border-radius:6px!important;padding:5px 6px!important;min-height:29px}
+.mv-npc-attributes-top{border:1px solid var(--npc-line);border-radius:10px;background:#242638;padding:10px;margin-bottom:14px}
+.mv-npc-attributes-caption{display:flex;align-items:center;justify-content:space-between;color:#f3e3c6;font-size:12px;margin-bottom:8px}
+.mv-npc-attributes-caption span{color:var(--npc-soft);font-size:10px}
+.mv-npc-attribute-buttons{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px}
+.mv-npc-attribute-buttons button{position:relative;min-width:0;min-height:68px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 2px;background:#191b2b!important;border:1px solid #383a51!important;border-radius:8px;color:var(--npc-fg)!important}
+.mv-npc-attribute-buttons button small{font-weight:800;color:var(--npc-gold);font-size:10px}
+.mv-npc-attribute-buttons button strong{font-size:20px}
+.mv-npc-attribute-buttons button span{font-size:10px;color:var(--npc-soft)}
+.mv-npc-attribute-buttons button i{position:absolute;top:5px;right:5px;font-size:10px;color:#c6ad79}
+.mv-npc-skill-line{width:100%;background:transparent!important;color:var(--npc-fg)!important;border:0!important;border-bottom:1px solid #34364a!important;border-radius:0!important;min-height:32px;padding:5px!important;text-align:left}
+.mv-npc-skill-line i{color:#d3ab6b;font-size:11px}
+.mv-npc-skill-line:hover,.mv-npc-attribute-buttons button:hover{background:#403853!important;border-color:#b8935b!important}
+.mv-npc-legacy{border-color:#876943}
+.mv-npc-support-level{border-top:1px solid #444257;padding:7px 0}
+.mv-npc-support-level p{border:0!important;margin:0!important;padding:6px 12px!important}
+.mv-npc-support-controls{padding:4px 12px;display:flex;flex-wrap:wrap;gap:7px}
+.mv-npc-support-controls button{background:#35344b;color:var(--npc-fg);border:1px solid #56516a;border-radius:6px;min-height:30px;padding:5px 9px;font-size:12px}
+.mv-npc-support-controls button:disabled{opacity:.43;cursor:not-allowed}
+@media(max-width:800px){.mv-npc-hero-tools{display:flex}.mv-npc-attribute-buttons{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:520px){.mv-npc-hero{flex-wrap:wrap}.mv-npc-hero-tools{width:100%;flex-direction:row;align-items:center}.mv-npc-attribute-buttons{grid-template-columns:repeat(3,minmax(0,1fr))}}

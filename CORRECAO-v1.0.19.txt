@@ -1,0 +1,16 @@
+MULTIVERSO RPG v1.0.19 — CORREÇÃO DE BÔNUS PASSIVOS NA FICHA DE NPC
+
+- A aba Combate agora mostra o valor da perícia somado aos bônus/penalidades fixos numéricos aplicáveis do Motor de Efeitos.
+- Exemplo: Tecnologia +3 (base) +2 (passiva) = +5 exibido.
+- Passe o mouse sobre uma perícia para ver a base e as fontes fixas que alteram o valor.
+- A janela de Criação continua mostrando o valor-base calculado por atributos, treinamento e especialização.
+- O motor de rolagem não foi alterado: seus bônus já eram aplicados corretamente e NÃO são somados duas vezes.
+- Bônus em dados, Vantagem/Desvantagem, escolhas 'ao usar' e modificadores manuais permanecem sendo resolvidos pelo motor no momento do teste; não podem entrar num total numérico estático.
+- Nenhum valor-base ou dado do personagem foi migrado/alterado.
+
+TESTE
+1. Abra o NPC que tem Tecnologia +3 e passiva +2.
+2. Em Combate, Tecnologia deve exibir +5.
+3. Passe o mouse sobre Tecnologia para ver os componentes.
+4. Clique e role: o resultado deve aplicar somente +3 de base e +2 de passiva, sem duplicação.
+5. Desative/remova a passiva; o número deve retornar a +3.

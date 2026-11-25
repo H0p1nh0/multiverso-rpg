@@ -1,0 +1,118 @@
+/* Multiverso 1.0.9 — Gerenciador de diários, inspirado no Gerenciador de Equipes. */
+.mv-party-action-host > .mv-diary-directory-action,
+.mv-diary-directory-action {
+  display:block; box-sizing:border-box; flex:0 0 100%; grid-column:1/-1;
+  width:100%; padding:0; margin:0;
+}
+.mv-diary-directory-action .mv-diary-directory-button {
+  display:flex; align-items:center; justify-content:center; gap:8px;
+  width:100%; min-height:33px; margin:0; padding:6px 10px;
+  border:1px solid #896e4c; border-radius:6px;
+  background:linear-gradient(110deg,#253447,#151f2e);
+  color:#edd1a4; font-weight:650; font-size:13px;
+  text-align:center; white-space:nowrap; cursor:pointer;
+}
+.mv-diary-directory-action .mv-diary-directory-button:hover,
+.mv-diary-directory-action .mv-diary-directory-button:focus-visible {
+  background:#304357; border-color:#d4ad76; color:#ffedcf;
+}
+
+/* Diálogo com rolagem interna após reduzir a altura. */
+.mv-diary-manager-window { max-height: min(90vh, 940px) !important; min-height:0 !important; }
+.mv-diary-manager-window .window-content {
+  min-height:0 !important; max-height:100%; display:flex;
+  flex-direction:column; overflow:hidden !important;
+}
+.mv-diary-manager-window .window-content > form,
+.mv-diary-manager-window form.dialog-form {
+  display:flex; flex-direction:column; min-height:0; max-height:100%; overflow:hidden;
+}
+.mv-diary-manager-window .dialog-content,
+.mv-diary-manager-window form.dialog-form > .dialog-content {
+  min-height:0; flex:1 1 auto; overflow-y:auto !important; overflow-x:hidden;
+  scrollbar-width:thin; overscroll-behavior-y:contain;
+}
+.mv-diary-manager-window .dialog-buttons,
+.mv-diary-manager-window form.dialog-form > footer { flex:0 0 auto; }
+.mv-diary-manager-window:has(#mv-diary-layout) .window-content {
+  overflow-y:auto !important; overscroll-behavior-y:contain;
+}
+
+#mv-diary-layout {
+  --mvd-gold:#e8c58f; --mvd-panel:#121c2c; --mvd-muted:#b0bdd0;
+  box-sizing:border-box; display:block; width:100%; max-width:100%; padding:12px;
+  overflow-x:hidden; color:#e8edf6; font-size:13px; line-height:1.45;
+  font-family:var(--font-primary,Roboto,sans-serif);
+}
+#mv-diary-layout *, #mv-diary-layout *::before, #mv-diary-layout *::after { box-sizing:border-box; }
+#mv-diary-layout .mv-diary-content { display:flex; flex-direction:column; gap:14px; width:100%; }
+#mv-diary-layout .mv-diary-banner {
+  display:flex; align-items:center; gap:12px; margin:0; padding:14px 16px;
+  border:1px solid #7d6445; border-radius:9px;
+  background:linear-gradient(125deg,#263648,#131d2d);
+}
+#mv-diary-layout .mv-diary-banner > i { color:var(--mvd-gold); font-size:24px; flex:none; }
+#mv-diary-layout .mv-diary-banner > div { min-width:0; display:flex; flex-direction:column; gap:3px; }
+#mv-diary-layout .mv-diary-banner strong {
+  display:block; margin:0; color:var(--mvd-gold);
+  font:700 21px/1.2 Georgia,'Times New Roman',serif;
+}
+#mv-diary-layout .mv-diary-banner small { color:#cbd6e7; font-size:12px; line-height:1.4; }
+#mv-diary-layout .mv-diary-summary {
+  display:flex; flex-wrap:wrap; align-items:center; gap:8px;
+}
+#mv-diary-layout .mv-diary-summary span {
+  display:inline-flex; align-items:center; gap:6px;
+  padding:8px 12px; border:1px solid #46576d; border-radius:6px;
+  background:#18263a; font-size:12px; color:#d8e1ee;
+}
+#mv-diary-layout .mv-diary-summary b { color:var(--mvd-gold); font-size:13px; }
+#mv-diary-layout .mv-diary-summary button { margin-left:auto; min-height:35px; }
+#mv-diary-layout .mv-diary-hint {
+  margin:0; padding:10px 12px; border:1px solid #3c506a;
+  border-radius:7px; background:#172538; color:#bdcde0; font-size:12px;
+}
+#mv-diary-layout .mv-diary-hint i { color:var(--mvd-gold); margin-right:5px; }
+#mv-diary-layout .mv-diary-hint b { color:#f0d5aa; }
+#mv-diary-layout .mv-diary-cards { display:grid; grid-template-columns:1fr; gap:10px; }
+#mv-diary-layout .mv-diary-card {
+  min-width:0; padding:13px; border:1px solid #465a73; border-radius:8px;
+  background:var(--mvd-panel); display:flex; flex-direction:column; gap:12px;
+}
+#mv-diary-layout .mv-diary-card-heading { display:flex; align-items:center; gap:10px; min-width:0; }
+#mv-diary-layout .mv-diary-card-heading img {
+  flex:none; width:39px; height:39px; border:1px solid #556780;
+  border-radius:7px; object-fit:cover;
+}
+#mv-diary-layout .mv-diary-card-title { flex:1; min-width:0; display:flex; flex-direction:column; gap:2px; }
+#mv-diary-layout .mv-diary-card-title strong { font-size:14px; color:#f3e3c9; overflow-wrap:anywhere; }
+#mv-diary-layout .mv-diary-card-title small { font-size:11px; color:var(--mvd-muted); overflow-wrap:anywhere; }
+#mv-diary-layout .mv-diary-status {
+  flex:none; display:inline-flex; align-items:center; gap:5px; padding:4px 8px;
+  font-size:11px; border-radius:5px; border:1px solid #8d7252; color:#f1cd99;
+  background:#3a3025;
+}
+#mv-diary-layout .mv-diary-status.linked { border-color:#577c67; color:#aedfc1; background:#1a352d; }
+#mv-diary-layout .mv-diary-card-actions { display:flex; align-items:stretch; flex-wrap:wrap; gap:8px; }
+#mv-diary-layout button {
+  cursor:pointer; min-height:34px; margin:0; padding:7px 12px; width:auto; max-width:100%;
+  border:1px solid #8d714d; border-radius:6px; background:#293b51; color:#f4dab3;
+  font-size:12px; font-weight:600; line-height:1.3; white-space:nowrap;
+}
+#mv-diary-layout button i { margin-right:5px; }
+#mv-diary-layout button:hover:not(:disabled) { filter:brightness(1.15); }
+#mv-diary-layout button:disabled { cursor:not-allowed; opacity:.45; }
+#mv-diary-layout .mv-diary-outline { color:#f1b6ad; border-color:#885954; background:#3a2930; }
+#mv-diary-layout .mv-diary-link-box { flex:1 1 310px; display:flex; gap:8px; min-width:0; }
+#mv-diary-layout select {
+  flex:1; min-width:0; min-height:34px; margin:0; padding:6px 9px;
+  border:1px solid #56647a; border-radius:6px; background:#0c1423; color:#ecf2fa;
+  font-size:12px; line-height:1.3;
+}
+#mv-diary-layout .mv-diary-empty { margin:0; padding:15px; color:var(--mvd-muted); text-align:center; }
+@media(max-width:680px) {
+  #mv-diary-layout .mv-diary-summary button { margin-left:0; width:100%; }
+  #mv-diary-layout .mv-diary-link-box { flex-basis:100%; }
+  #mv-diary-layout .mv-diary-card-actions > button { flex:1 1 auto; }
+  #mv-diary-layout .mv-diary-status { display:none; }
+}

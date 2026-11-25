@@ -1,0 +1,20 @@
+Multiverso RPG v1.0.16 — Relacionamentos de NPC e visual de Ações de Apoio
+
+NOVO
+- Aba Relacionamentos imediatamente após Combate, disponível somente ao mestre.
+- Relações direcionais NPC -> personagens cadastrados nas equipes existentes.
+- Afeição: 3 bolinhas vermelhas. Admiração: 3 bolinhas douradas.
+- Clique no nível para selecionar; clique novamente no mesmo nível para zerar.
+- Valores salvos no próprio NPC, em flags.multiverso-rpg.npcRelationsV1.
+- Outros relacionamentos cadastráveis somente por nome, sem listas de fichas.
+- Maior Admiração cadastrada na Party indicada com lembrete de considerar apenas presentes em combate.
+
+MELHORADO
+- Formulário de Ação de Apoio reorganizado com cabeçalho, campos alinhados,
+  quatro cartões de progressão e rolagem independente de tela.
+- CSS versionado próprio para Foundry 14.
+
+PRESERVADO
+- Ficha de combate, atributos/perícias, Fluxos, janela separada de Criação,
+  motor original de Skills e Técnicas, ações de apoio existentes e diários.
+- O limite coletivo dos apoios continua controlado manualmente pelo mestre.

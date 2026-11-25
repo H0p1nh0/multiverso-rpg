@@ -1,0 +1,25 @@
+/* Multiverso RPG v1.0.20 — Defesas e Reações dos NPCs.
+   Complemento isolado: nenhuma alteração em Fluxos, Inventário ou outras abas. */
+.multiverso-npc-window .mv-npc-defenses{margin:12px 0 16px;min-width:0;container-type:inline-size}
+.multiverso-npc-window .mv-npc-defenses-title{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:6px 14px;margin:0 2px 9px}
+.multiverso-npc-window .mv-npc-defenses-title h3{margin:0;color:#f0cf99;font-size:13px;font-weight:850;display:flex;align-items:center;gap:8px}
+.multiverso-npc-window .mv-npc-defenses-title span{color:#9fa8c1;font-size:10.5px}
+.multiverso-npc-window .mv-npc-defenses-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.multiverso-npc-window .mv-npc-defense-tile{min-width:0;min-height:81px;display:flex;align-items:center;gap:11px;padding:13px 12px;border:1px solid #52546c;border-radius:11px;background:linear-gradient(135deg,#282c43,#202436);color:#f5f1fa;text-align:left;box-shadow:inset 0 1px 0 #ffffff0a;transition:background .14s,border-color .14s,transform .14s}
+.multiverso-npc-window button.mv-npc-defense-tile{appearance:none!important;width:100%;height:auto!important;line-height:normal!important}
+.multiverso-npc-window .mv-npc-defense-tile[role=button]{cursor:pointer}
+.multiverso-npc-window .mv-npc-defense-tile:hover{border-color:#d4ae7e;background:linear-gradient(135deg,#30324e,#242b42)}
+.multiverso-npc-window .mv-npc-defense-tile:focus-visible{outline:2px solid #e3b77c;outline-offset:2px}
+.multiverso-npc-window .mv-npc-defense-icon{flex:none;width:40px;height:40px;border-radius:10px;display:grid;place-items:center;background:#a9754933;color:#edc28d;font-size:18px}
+.multiverso-npc-window .mv-npc-defense-dodge .mv-npc-defense-icon{background:#4289bd29;color:#89c9f0}
+.multiverso-npc-window .mv-npc-defense-reactions .mv-npc-defense-icon{background:#9874c034;color:#d4b8fa}
+.multiverso-npc-window .mv-npc-defense-copy{display:flex;flex:1;flex-direction:column;gap:5px;min-width:0}
+.multiverso-npc-window .mv-npc-defense-copy strong{font-size:13px;color:#f1e8e9;font-weight:850}
+.multiverso-npc-window .mv-npc-defense-copy small{font-size:10px;color:#aeb4cc;line-height:1.25;overflow-wrap:anywhere}
+.multiverso-npc-window .mv-npc-defense-tile>b{font-size:22px;font-weight:850;white-space:nowrap;color:#f7d7a5;font-variant-numeric:tabular-nums}
+.multiverso-npc-window .mv-npc-defense-dodge>b{color:#a0dcf4}
+.multiverso-npc-window .mv-npc-defense-reactions>b{color:#dbb9ff}
+.multiverso-npc-window .mv-npc-defense-tile.is-spent{opacity:.7}
+.multiverso-npc-window .mv-npc-defense-die{font-size:13px;color:#a9a4be;flex:none}
+@container(max-width:790px){.multiverso-npc-window .mv-npc-defenses-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.multiverso-npc-window .mv-npc-defense-reactions{grid-column:1/-1}}
+@container(max-width:490px){.multiverso-npc-window .mv-npc-defenses-grid{grid-template-columns:minmax(0,1fr)}.multiverso-npc-window .mv-npc-defense-reactions{grid-column:auto}.multiverso-npc-window .mv-npc-defenses-title span{font-size:10px}}

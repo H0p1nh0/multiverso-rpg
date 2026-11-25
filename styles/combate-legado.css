@@ -1,0 +1,264 @@
+/* Multiverso RPG: estilos extraídos dos scripts legados ficha-skills.js e combate-mental.js.
+   Somente escopo dos controles de Combate. Os elementos nativos de outras abas não são modificados. */
+      /* V8 - topo de combate fora da tabela do CSB */
+      .mv-combate-atributos-table {
+        display: none !important;
+      }
+
+      .mv-nativo-topo-standalone {
+        display: grid !important;
+        grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        margin-top: 4px !important;
+      }
+
+      .mv-nativo-topo-standalone > * {
+        min-width: 0 !important;
+      }
+
+      .mv-combate-standalone-action,
+      .mv-combate-standalone-info {
+        width: 100% !important;
+        min-width: 0 !important;
+        min-height: 100px !important;
+        margin: 0 !important;
+        padding: 12px 10px !important;
+        border: 1px solid rgba(188,143,65,.68) !important;
+        border-radius: 10px !important;
+        color: #f0dfbd !important;
+        box-shadow: inset 0 0 0 1px rgba(255,255,255,.02), 0 5px 14px rgba(0,0,0,.14) !important;
+      }
+
+      .mv-combate-standalone-action {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 5px !important;
+        cursor: pointer !important;
+        background: linear-gradient(180deg, rgba(61,47,55,.96), rgba(30,23,31,.98)) !important;
+        transition: transform .12s ease, filter .12s ease, border-color .12s ease !important;
+      }
+
+      .mv-combate-standalone-action:hover {
+        transform: translateY(-2px) !important;
+        filter: brightness(1.10) !important;
+        border-color: rgba(225,185,104,.96) !important;
+      }
+
+      .mv-combate-standalone-info {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 3px !important;
+        background: linear-gradient(180deg, rgba(37,30,39,.90), rgba(22,17,24,.98)) !important;
+      }
+
+      .mv-combate-standalone-icon {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 32px !important;
+        height: 32px !important;
+        flex: 0 0 32px !important;
+        border-radius: 999px !important;
+        border: 1px solid rgba(188,143,65,.64) !important;
+        background: rgba(10,9,12,.40) !important;
+        font-size: 15px !important;
+      }
+
+      .mv-combate-standalone-title {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        font-size: 12px !important;
+        line-height: 1.1 !important;
+        font-weight: 900 !important;
+        letter-spacing: .045em !important;
+        white-space: nowrap !important;
+      }
+
+      .mv-combate-standalone-value {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        font-size: 20px !important;
+        line-height: 1 !important;
+        font-weight: 900 !important;
+      }
+
+      .mv-combate-standalone-sub {
+        display: block !important;
+        width: 100% !important;
+        text-align: center !important;
+        font-size: 9px !important;
+        line-height: 1.05 !important;
+        font-weight: 700 !important;
+        opacity: .58 !important;
+        white-space: nowrap !important;
+      }
+
+      @media (max-width: 900px) {
+        .mv-nativo-topo-standalone {
+          grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .mv-nativo-topo-standalone {
+          grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        }
+      }
+
+
+      /* Todos os 5 cards do topo ficam EXATAMENTE do mesmo tamanho. */
+      .mv-nativo-topo-standalone {
+        grid-auto-rows: 112px !important;
+        align-items: stretch !important;
+      }
+
+      .mv-combate-standalone-action,
+      .mv-combate-standalone-info {
+        box-sizing: border-box !important;
+        width: 100% !important;
+        height: 112px !important;
+        min-height: 112px !important;
+        max-height: 112px !important;
+        padding: 12px 10px !important;
+        align-self: stretch !important;
+      }
+
+      .mv-combate-standalone-action {
+        appearance: none !important;
+        -webkit-appearance: none !important;
+      }
+
+
+      .mv-nativo-topo-standalone [data-mv-combate-acao="reacao"],
+      .mv-nativo-topo-standalone [data-mv-combate-acao="deslocamento"] {
+        cursor:pointer !important;
+        transition:filter .12s ease, opacity .12s ease, transform .12s ease !important;
+      }
+      .mv-nativo-topo-standalone [data-mv-combate-acao="reacao"]:hover,
+      .mv-nativo-topo-standalone [data-mv-combate-acao="deslocamento"]:hover {
+        filter:brightness(1.08);
+      }
+      .mv-nativo-topo-standalone.mv-combate-runtime-inativo .mv-combate-standalone-action,
+      .mv-nativo-topo-standalone.mv-combate-runtime-inativo [data-mv-combate-acao="reacao"],
+      .mv-nativo-topo-standalone.mv-combate-runtime-inativo [data-mv-combate-acao="deslocamento"] {
+        opacity:.48 !important;
+        cursor:not-allowed !important;
+      }
+      .mv-nativo-acoes-turno {
+        margin:10px 0 0;
+        padding:10px 12px 2px;
+        border-top:1px solid rgba(188,143,65,.28);
+      }
+      .mv-combate-acoes-titulo {
+        margin:0 0 8px;
+        font-size:11px;
+        font-weight:800;
+        letter-spacing:.06em;
+        color:#f0dfbd;
+        opacity:.9;
+      }
+      .mv-combate-acoes-grid {
+        display:grid;
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        gap:8px;
+      }
+      .mv-combate-acao-turno {
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:10px;
+        min-width:0;
+        min-height:54px;
+        padding:8px 10px;
+        border:1px solid rgba(139,111,71,.55);
+        border-radius:8px;
+        background:linear-gradient(180deg,rgba(48,37,45,.92),rgba(25,20,27,.96));
+        color:#f0dfbd;
+        cursor:pointer;
+        user-select:none;
+        transition:filter .12s ease,border-color .12s ease,transform .12s ease;
+      }
+      .mv-combate-acao-turno:hover {
+        filter:brightness(1.08);
+        border-color:rgba(225,185,104,.86);
+        transform:translateY(-1px);
+      }
+      .mv-combate-acao-turno.inativa { opacity:.5; }
+      .mv-combate-acao-turno-nome {
+        display:flex;
+        flex-direction:column;
+        min-width:0;
+      }
+      .mv-combate-acao-turno-nome strong { font-size:11px; line-height:1.1; }
+      .mv-combate-acao-turno-nome small { margin-top:3px; font-size:8px; opacity:.58; white-space:nowrap; }
+      .mv-combate-acao-turno-valor {
+        flex:0 0 auto;
+        font-size:18px;
+        font-weight:900;
+        line-height:1;
+      }
+      .mv-nativo-acoes-turno.mv-combate-runtime-inativo .mv-combate-acao-turno {
+        opacity:.42;
+        cursor:not-allowed;
+      }
+      @media (max-width:620px) {
+        .mv-combate-acoes-grid { grid-template-columns:1fr; }
+      }
+      .mv-combate-ordem-iniciativa {
+        margin:10px 0 2px;
+        padding:10px 12px;
+        border-top:1px solid rgba(188,143,65,.28);
+      }
+      .mv-combate-ordem-titulo {
+        margin:0 0 8px;
+        font-size:11px;
+        font-weight:800;
+        letter-spacing:.06em;
+        color:#f0dfbd;
+        opacity:.9;
+      }
+      .mv-combate-ordem-lista {
+        display:flex;
+        flex-wrap:wrap;
+        gap:6px;
+      }
+      .mv-combate-ordem-chip {
+        display:inline-flex;
+        align-items:center;
+        gap:6px;
+        padding:5px 8px;
+        border:1px solid rgba(139,111,71,.55);
+        border-radius:999px;
+        background:rgba(26,20,27,.72);
+        color:#e8dcc8;
+        font-size:11px;
+      }
+      .mv-combate-ordem-chip.atual {
+        border-color:#d0a64e;
+        box-shadow:0 0 0 1px rgba(208,166,78,.2) inset;
+      }
+      .mv-combate-ordem-pos { opacity:.6; }
+      .mv-combate-ordem-ini { color:#f0dfbd; font-weight:800; }
+
+/* Ação bônus: mesmo card legado, controle adicional da economia v0.2.00. */
+.multiverso-personagem .mv-combate-acoes-grid {grid-template-columns:repeat(4,minmax(0,1fr));}
+@media(max-width:760px){.multiverso-personagem .mv-combate-acoes-grid {grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:450px){.multiverso-personagem .mv-combate-acoes-grid {grid-template-columns:1fr;}}
+.multiverso-personagem .mv-combate-standalone-info:focus-visible,
+.multiverso-personagem .mv-combate-acao-turno:focus-visible {outline:2px solid #e9c783;outline-offset:2px}
+.multiverso-personagem .mv-combate-ordem-iniciativa {margin:10px 0 16px;}
+.multiverso-personagem .mv-nativo-topo-standalone {margin-bottom:0}
+
+/* Condições gerais: mantém paleta visual legada sem presumir restrição de ações. */
+.multiverso-personagem .mv-combate-condition-entry {display:flex;justify-content:space-between;align-items:center;gap:12px;border:1px solid rgba(188,143,65,.28);border-radius:6px;padding:8px 11px;margin:6px 0;background:rgba(29,23,30,.55);color:#f0dfbd;}
+.multiverso-personagem .mv-combate-condition-entry strong {font-size:12px;overflow-wrap:anywhere;}
+.multiverso-personagem .mv-combate-condition-entry span {font-size:11px;opacity:.77;text-align:right;}

@@ -1,0 +1,138 @@
+/* Multiverso NPC v1.0.15. Escopo estrito: sem efeitos na ficha de personagem. */
+/* Autocarregado em JS com ?v=1.0.15 para não reutilizar o CSS antigo em cache. */
+.multiverso-npc-window{
+  --npc-fg:#f0eff7;--npc-soft:#aab0c6;--npc-gold:#e9bc78;--npc-line:#393c56;
+  --npc-bg:#171a29;--npc-card:#24273a;--npc-input:#171b2d;
+  min-width:390px;
+}
+.multiverso-npc-window .window-content{padding:0!important;overflow:auto!important;background:#161825!important;color:var(--npc-fg)}
+.multiverso-npc-window .mv-npc{box-sizing:border-box;padding:0 18px 22px;min-height:100%;color:var(--npc-fg);font-size:13px;font-family:inherit}
+.multiverso-npc-window .mv-npc *{box-sizing:border-box}
+.multiverso-npc-window .mv-npc button,.multiverso-npc-window .mv-npc input,.multiverso-npc-window .mv-npc select,.multiverso-npc-window .mv-npc textarea{font-family:inherit}
+.multiverso-npc-window .mv-npc button{cursor:pointer}
+.multiverso-npc-window .mv-npc button:disabled{opacity:.48;cursor:not-allowed}
+/* Topo: sempre visível e com identidade/seletores em uma linha clara. */
+.multiverso-npc-window .mv-npc-hero{
+  position:sticky;top:0;z-index:8;display:grid;grid-template-columns:78px minmax(250px,1fr) auto;
+  align-items:center;gap:15px;margin:0 -18px;padding:14px 20px 15px;
+  border-bottom:1px solid #454258;background:#1c1d2eee;
+  box-shadow:0 5px 17px #0507112e;backdrop-filter:blur(9px);
+}
+.multiverso-npc-window .mv-npc-portrait{position:relative;width:76px;height:76px;border:2px solid #6f5e86;border-radius:14px;overflow:hidden;background:#151626}
+.multiverso-npc-window .mv-npc-portrait img{width:100%;height:100%;object-fit:cover}
+.multiverso-npc-window .mv-npc-portrait button{position:absolute;bottom:0;right:0;background:#171927eb;color:#f6f5ff;border:0;padding:5px 7px;font-size:12px}
+.multiverso-npc-window .mv-npc-identity{display:grid;gap:5px;min-width:0}
+.multiverso-npc-window .mv-npc-eyebrow{font-size:10px;font-weight:850;color:var(--npc-gold);letter-spacing:.11em;text-transform:uppercase}
+.multiverso-npc-window .mv-npc-name{display:block;width:100%!important;max-width:680px;height:34px!important;border:0!important;box-shadow:none!important;background:transparent!important;padding:0 1px!important;line-height:1.25!important;color:#f1eefb!important;font-size:23px!important;font-weight:850!important}
+.multiverso-npc-window .mv-npc-subtitle{display:none}
+.multiverso-npc-window .mv-npc-header-config{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:2px}
+.multiverso-npc-window .mv-npc-header-config label{display:flex;align-items:center;gap:7px;font-size:11px;color:#c0bfcd;font-weight:700;white-space:nowrap}
+.multiverso-npc-window .mv-npc-header-config select{min-width:112px;max-width:140px;height:29px!important;min-height:29px!important;padding:3px 8px!important;border:1px solid #655d77!important;border-radius:7px!important;background:#2c2a40!important;color:#fff1d6!important;font-size:12px!important;font-weight:750!important}
+.multiverso-npc-window .mv-npc-hero-tools{display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:7px;min-width:162px}
+.multiverso-npc-window .mv-npc-hero-tools>span{font-size:10px;color:#ada5bc;align-self:flex-end}
+.multiverso-npc-window .mv-npc-hero-tools button,.multiverso-npc-window .mv-npc-secondary,.multiverso-npc-window .mv-npc-add{min-height:34px;height:auto;padding:7px 10px;border:1px solid #665c7b;border-radius:8px;background:#343048;color:#f4e4ce;font-weight:750;font-size:12px}
+.multiverso-npc-window .mv-npc-hero-tools button:hover,.multiverso-npc-window .mv-npc-add:hover,.multiverso-npc-window .mv-npc-secondary:hover{background:#4d3c5f;border-color:#c19a65}
+.multiverso-npc-window .mv-npc-hero-config-cta{border-color:#b3855c!important;background:#4a3547!important}
+.multiverso-npc-window .mv-npc-tabs{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 0 10px;margin:0 0 14px;border-bottom:1px solid var(--npc-line)}
+.multiverso-npc-window .mv-npc-tabs button{min-height:34px;min-width:120px;padding:8px 13px;border:1px solid transparent;border-radius:8px;background:transparent;color:#bbc0d1;font-size:12px;font-weight:800}
+.multiverso-npc-window .mv-npc-tabs button:hover{background:#2d2d44}
+.multiverso-npc-window .mv-npc-tabs button.is-active{color:#ffe2af;background:#403348;border-color:#72536a}
+.multiverso-npc-window .mv-npc-tabs button.mv-npc-open-config{margin-left:auto;color:#ddc7a6;border-color:#514961;background:#282639}
+.multiverso-npc-window .mv-npc-external-icon{font-size:10px;margin-left:3px;opacity:.8}
+.multiverso-npc-window .mv-npc-panel[hidden]{display:none!important}
+.multiverso-npc-window .mv-npc-main{min-width:0}
+/* Atributos: seis tiles organizados horizontalmente, nunca botões nativos empilhados. */
+.multiverso-npc-window .mv-npc-attributes-top{padding:13px 14px 14px;margin:0 0 15px;border:1px solid #49415c;border-radius:12px;background:linear-gradient(125deg,#2a273d,#222438 65%,#252b40)}
+.multiverso-npc-window .mv-npc-attributes-caption{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+.multiverso-npc-window .mv-npc-attributes-caption h3{font-size:13px!important;line-height:1.3;margin:0;color:#f2dfbf;font-weight:850}
+.multiverso-npc-window .mv-npc-attributes-caption span{font-size:11px;color:#aeb6ce}
+.multiverso-npc-window .mv-npc-attribute-buttons{display:grid!important;grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:9px!important;align-items:stretch}
+.multiverso-npc-window .mv-npc-attribute-buttons button.mv-npc-attr-tile{display:flex!important;position:relative!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:3px!important;min-width:0!important;min-height:83px!important;height:auto!important;margin:0!important;padding:9px 6px!important;border:1px solid #49465f!important;border-radius:10px!important;background:#1a2032!important;color:#f3f0fd!important;text-align:center!important;box-shadow:inset 0 1px #ffffff08!important;transition:border-color .15s,background .15s,transform .15s}
+.multiverso-npc-window .mv-npc-attr-tile .mv-npc-attr-top{display:flex;align-items:center;justify-content:space-between;width:100%;gap:5px;color:#e0bc80}
+.multiverso-npc-window .mv-npc-attr-tile .mv-npc-attr-top small{font-size:10px!important;font-weight:850!important;letter-spacing:.05em;color:#e4bd83!important}
+.multiverso-npc-window .mv-npc-attr-tile .mv-npc-attr-top i{font-size:11px;color:#c5a37d}
+.multiverso-npc-window .mv-npc-attr-tile strong{display:block;font-size:24px!important;line-height:1.1;color:#fff!important;font-variant-numeric:tabular-nums}
+.multiverso-npc-window .mv-npc-attr-tile .mv-npc-attr-name{display:block;font-size:10px!important;font-weight:650!important;color:#bbc0d4!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%}
+.multiverso-npc-window .mv-npc-attribute-buttons button.mv-npc-attr-tile:hover{background:#373148!important;border-color:#d4a46e!important;transform:translateY(-1px)}
+/* Fluxos visuais da v1.0.13 mantidos. */
+.multiverso-npc-window .mv-npc-flux-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 15px}
+.multiverso-npc-window .mv-npc-flux{padding:13px 15px;min-width:0;background:#25273a;border:1px solid #3d4059;border-top:3px solid #f2d2aa;border-radius:11px}
+.multiverso-npc-window .mv-npc-flux-pv{border-top-color:#e36d86}.multiverso-npc-window .mv-npc-flux-sta{border-top-color:#59b7d5}.multiverso-npc-window .mv-npc-flux-pm{border-top-color:#a99de8}.multiverso-npc-window .mv-npc-flux-san{border-top-color:#7bd3a5}
+.multiverso-npc-window .mv-npc-flux-title{display:flex;align-items:center;gap:7px;font-size:11px;color:#aeb4cb;font-weight:850;text-transform:uppercase}
+.multiverso-npc-window .mv-npc-flux-values{display:flex;align-items:center;gap:6px;margin-top:7px;white-space:nowrap}
+.multiverso-npc-window .mv-npc-flux-values input{width:75px!important;min-width:0;border:0!important;background:transparent!important;box-shadow:none!important;padding:1px!important;height:auto!important;color:#fff!important;font-size:24px!important;font-weight:850!important}
+.multiverso-npc-window .mv-npc-flux-values span{font-size:19px;color:#adaebf;font-weight:700}
+/* Blocos de combate com perícias clicáveis discretas. */
+.multiverso-npc-window .mv-npc-combat-columns{display:grid;grid-template-columns:minmax(300px,.84fr) minmax(340px,1.16fr);gap:13px;align-items:start}
+.multiverso-npc-window .mv-npc-card{background:#24273a;padding:15px;border:1px solid #3a3e58;border-radius:11px;min-width:0;margin:0 0 13px}
+.multiverso-npc-window .mv-npc-card h3{margin:0;font-size:14px;line-height:1.35;color:#ffe3b8;font-weight:850}
+.multiverso-npc-window .mv-npc-card-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.multiverso-npc-window .mv-npc-card-head>span{font-size:10px;color:#b2b6ca}
+.multiverso-npc-window .mv-npc-skills-quick{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 9px}
+.multiverso-npc-window .mv-npc-skills-quick button.mv-npc-skill-line{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:5px!important;min-height:32px!important;padding:5px 8px!important;margin:0!important;width:100%!important;border:1px solid #393e55!important;border-radius:6px!important;background:#1c2132!important;color:#dfe4f3!important;font-size:11px!important;text-align:left!important;line-height:1.25!important;box-shadow:none!important}
+.multiverso-npc-window .mv-npc-skill-line span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.multiverso-npc-window .mv-npc-skill-line b{color:#f6d19d;font-size:11px;font-variant-numeric:tabular-nums}
+.multiverso-npc-window .mv-npc-skill-line i{font-size:10px;color:#bd9b6b}
+.multiverso-npc-window .mv-npc-skills-quick button.mv-npc-skill-line:hover{background:#39334c!important;border-color:#a98a65!important;color:#fff!important}
+.multiverso-npc-window .mv-npc-ability{margin:0 0 8px;border:1px solid #3e425b;border-radius:8px;background:#1d2233;overflow:hidden}
+.multiverso-npc-window .mv-npc-ability summary{display:flex;align-items:center;gap:8px;cursor:pointer;padding:11px;list-style:none}
+.multiverso-npc-window .mv-npc-ability summary::-webkit-details-marker{display:none}
+.multiverso-npc-window .mv-npc-ability summary:before{content:'▸';color:var(--npc-gold)}
+.multiverso-npc-window .mv-npc-ability[open] summary:before{content:'▾'}
+.multiverso-npc-window .mv-npc-ability-name{flex:1;min-width:0;font-weight:850;overflow-wrap:anywhere}
+.multiverso-npc-window .mv-npc-cost,.multiverso-npc-window .mv-npc-action-tag{font-size:10px;color:#f1d6b5;white-space:nowrap;background:#3a354d;padding:4px 6px;border-radius:5px}
+.multiverso-npc-window .mv-npc-ability>p,.multiverso-npc-window .mv-npc-ability>small{display:block;padding:0 12px;margin:7px 0;font-size:12px;line-height:1.5;color:#cad0df;white-space:pre-wrap;overflow-wrap:anywhere}
+.multiverso-npc-window .mv-npc-ability-controls{display:flex;gap:7px;flex-wrap:wrap;padding:10px 12px;border-top:1px solid #41435a}
+.multiverso-npc-window .mv-npc-ability-controls button,.multiverso-npc-window .mv-npc-support-controls button{min-height:30px;border:1px solid #59566f;border-radius:7px;background:#39364e;color:#f1e5d5;padding:5px 10px;font-size:12px}
+.multiverso-npc-window .mv-npc-ability-controls button.mv-npc-primary{background:#53405f;border-color:#926d8f}
+.multiverso-npc-window .mv-npc-add{display:block;width:100%;margin-top:6px;border-style:dashed;min-height:36px}
+.multiverso-npc-window .mv-npc-empty,.multiverso-npc-window .mv-npc-hint{font-size:12px;line-height:1.5;color:#afb5c9;margin:6px 0 12px}
+.multiverso-npc-window .mv-npc input:not(.mv-npc-name):not([type=checkbox]),.multiverso-npc-window .mv-npc select,.multiverso-npc-window .mv-npc textarea{max-width:100%;border:1px solid #545571;border-radius:7px;background:#181d2d;color:#f3effb;padding:6px 8px;box-shadow:none}
+.multiverso-npc-window .mv-npc textarea{resize:vertical;width:100%;min-height:70px}
+.multiverso-npc-window .mv-npc input:focus,.multiverso-npc-window .mv-npc select:focus,.multiverso-npc-window .mv-npc textarea:focus{outline:1px solid #c79b67;border-color:#c79b67}
+.multiverso-npc-window .mv-npc input[readonly]{opacity:.84}
+.multiverso-npc-window .mv-npc-legacy{border-color:#a58357}
+.multiverso-npc-window .mv-npc-support-level{border-top:1px solid #44465f;padding:8px 0}
+.multiverso-npc-window .mv-npc-support-level p{font-size:12px;margin:0;padding:7px 12px;line-height:1.45;white-space:pre-wrap}
+.multiverso-npc-window .mv-npc-support-controls{display:flex;gap:7px;flex-wrap:wrap;padding:4px 12px}
+.multiverso-npc-window .mv-npc-warning{border:1px solid #a07954;background:#493629;padding:12px;border-radius:9px;margin-bottom:14px;color:#fce1c0;font-size:12px}
+.multiverso-npc-window .mv-npc-warning h3{font-size:14px;margin:0 0 4px;color:#ffdda2}
+.multiverso-npc-window .mv-npc-warning p{margin:4px 0}
+/* Janela independente de criação: duas janelas reais, uma para combate e outra para configuração. */
+.multiverso-npc-window:not(.multiverso-npc-editor-window) .mv-npc-panel[data-npc-panel="criacao"]{display:none!important}
+.multiverso-npc-editor-window .mv-npc-panel[data-npc-panel="combate"],.multiverso-npc-editor-window .mv-npc-panel[data-npc-panel="apoio"]{display:none!important}
+.multiverso-npc-editor-window .mv-npc-panel[data-npc-panel="criacao"]{display:block!important}
+.multiverso-npc-editor-window .mv-npc-tabs{display:none!important}
+.multiverso-npc-editor-window .mv-npc-hero-tools{display:none!important}
+.multiverso-npc-editor-window .mv-npc-hero{grid-template-columns:62px minmax(200px,1fr);gap:14px;padding:12px 18px}
+.multiverso-npc-editor-window .mv-npc-portrait{width:60px;height:60px}
+.multiverso-npc-editor-window .mv-npc-main{padding-top:16px}
+.multiverso-npc-editor-window .mv-npc-creation-intro{margin-bottom:15px;padding:14px 15px;background:linear-gradient(110deg,#2c2a42,#222a3d);border:1px solid #56506b;border-radius:10px}
+.multiverso-npc-editor-window .mv-npc-creation-intro h3{margin:0 0 4px;color:#f7d8a8;font-size:17px}
+.multiverso-npc-editor-window .mv-npc-creation-intro p{margin:0;font-size:12px;color:#b7bed1;line-height:1.45}
+.multiverso-npc-editor-window .mv-npc-fields-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.multiverso-npc-editor-window .mv-npc-attrs-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:9px}
+.multiverso-npc-editor-window .mv-npc-attrs-grid label{display:flex;flex-direction:column;align-items:center;gap:6px;padding:11px 8px;background:#1b2132;border:1px solid #3e425b;border-radius:10px;font-size:11px;font-weight:800;text-align:center}
+.multiverso-npc-editor-window .mv-npc-attrs-grid input{width:100%;min-height:40px;text-align:center;font-size:20px;font-weight:850}
+.multiverso-npc-editor-window .mv-npc-attrs-grid small{font-size:10px;color:#aeb6ce;font-weight:400}
+.multiverso-npc-editor-window .mv-npc-cut-label{display:flex;gap:10px;align-items:center;margin-bottom:11px;font-size:12px}
+.multiverso-npc-editor-window .mv-npc-cut-label select{max-width:170px}
+.multiverso-npc-editor-window .mv-npc-skill-editor-head,.multiverso-npc-editor-window .mv-npc-skill-editor-row{display:grid;grid-template-columns:minmax(170px,1fr) 80px 140px 75px;align-items:center;gap:8px;padding:8px 11px;border-bottom:1px solid #3b3d56;font-size:12px;text-align:center}
+.multiverso-npc-editor-window .mv-npc-skill-editor-head{background:#333046;color:#e9d5b4;font-weight:850;border-radius:6px 6px 0 0}
+.multiverso-npc-editor-window .mv-npc-skill-editor-row>span{text-align:left}
+.multiverso-npc-editor-window .mv-npc-skill-editor-row small{color:#aeb5c7}
+.multiverso-npc-editor-window .mv-npc-skill-editor-row label{display:grid;place-items:center}
+.multiverso-npc-editor-window .mv-npc-skill-editor-row input[type=number]{width:85px;text-align:center}
+.multiverso-npc-editor-window .mv-npc-skill-editor-row strong{color:#efcf9d}
+.multiverso-npc-editor-window .mv-npc-overrides{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.multiverso-npc-editor-window .mv-npc-overrides label{display:grid;gap:6px;font-size:12px;font-weight:700}
+.multiverso-npc-editor-window .mv-npc-overrides small{color:#b3b6cb;font-weight:400}
+/* Preserva estilos do editor em DialogV2 fora da raiz NPC. */
+.mv-npc-ability-edit{display:grid;gap:12px;max-height:65vh;overflow:auto;padding:6px}
+.mv-npc-ability-edit label{display:grid;gap:4px;font-weight:700;font-size:12px}
+.mv-npc-ability-edit input,.mv-npc-ability-edit textarea,.mv-npc-ability-edit select{width:100%;border:1px solid #666;background:#242437;color:inherit;padding:7px;border-radius:5px}
+.mv-npc-ability-edit p{font-size:12px;opacity:.85;line-height:1.5}
+.mv-npc-dialog-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+@media(max-width:920px){.multiverso-npc-window .mv-npc-combat-columns{grid-template-columns:1fr}.multiverso-npc-window .mv-npc-hero{grid-template-columns:65px minmax(190px,1fr);}.multiverso-npc-window .mv-npc-portrait{width:63px;height:63px}.multiverso-npc-window .mv-npc-hero-tools{grid-column:1/-1;display:flex;flex-direction:row;justify-content:flex-end;align-items:center}.multiverso-npc-window .mv-npc-attrs-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:680px){.multiverso-npc-window .mv-npc-attribute-buttons{grid-template-columns:repeat(3,minmax(0,1fr))!important}.multiverso-npc-window .mv-npc-flux-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.multiverso-npc-window .mv-npc-header-config{gap:5px}.multiverso-npc-window .mv-npc-name{font-size:19px!important}.multiverso-npc-editor-window .mv-npc-skill-editor-head,.multiverso-npc-editor-window .mv-npc-skill-editor-row{grid-template-columns:minmax(115px,1fr) 60px 85px 53px;gap:4px;padding:7px 2px}.multiverso-npc-editor-window .mv-npc-skill-editor-row input[type=number]{width:60px}.multiverso-npc-editor-window .mv-npc-overrides{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){.multiverso-npc-window .mv-npc{padding:0 10px 14px}.multiverso-npc-window .mv-npc-hero{margin:0 -10px;padding:12px}.multiverso-npc-window .mv-npc-skills-quick{grid-template-columns:1fr}.multiverso-npc-window .mv-npc-hero-tools{flex-wrap:wrap}.multiverso-npc-window .mv-npc-tabs button{min-width:auto}.multiverso-npc-editor-window .mv-npc-attrs-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

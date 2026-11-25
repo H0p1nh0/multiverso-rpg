@@ -1,0 +1,13 @@
+Multiverso RPG v1.0.12 — Afinidades com marcadores visuais e cadastro sem spoilers
+Base: v1.0.11 (botão de Afinidades nos Journals).
+
+- Afeição: 3 marcadores circulares vermelhos, com brilho quando ativados.
+- Admiração: 3 marcadores circulares dourados, com brilho quando ativados.
+- Seleção: clicar na bolinha 1, 2 ou 3 define o nível; repetir o clique na bolinha que corresponde ao nível atual zera (0).
+- Novos níveis cadastráveis: 0–3. Valores legados fora dessa escala não são apagados automaticamente; a interface pede que o usuário escolha um novo nível.
+- Adicionar relacionamento: somente nome digitado manualmente, sem lista de fichas e NPCs do mundo.
+- Proteção contra spoilers: relacionamentos antigos vinculados a fichas sem permissão de visualização ficam ocultos dos jogadores, sem remoção dos registros.
+- Preservados: dados do Journal, vínculos de Party, diários automáticos, permissões, edição pelo dono do diário e GM.
+- Não foram incluídas nesta versão: automações de rolagem, gastos de Afeição ou consequências de Sanidade.
+
+Verificações: testes locais de funcionalidades e regressões, sintaxe e integridade do ZIP. Validação no Foundry ainda precisa ser feita por Hope.

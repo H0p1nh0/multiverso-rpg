@@ -1,0 +1,18 @@
+Multiverso RPG v1.0.10 — Afinidades nos diários (interface e cadastro)
+
+Base: versão 1.0.9, aprovada no Foundry.
+
+- Botão Afinidades exclusivamente no Journal VINCULADO a uma ficha, imediatamente acima dos controles Add Page.
+- O botão só é mostrado ao dono da ficha/diário ou ao mestre.
+- Gerenciador de Afinidades no estilo dark fantasy com grupos Membros da Equipe e Outros Relacionamentos.
+- Os membros da Party são lidos automaticamente do cadastro existente em Gerenciar Equipe; o próprio personagem é excluído.
+- Adicionar relações por personagem acessível no mundo ou por nome de NPC sem ficha.
+- Afeição e Admiração de cada relação são editáveis diretamente pelo dono do diário, sem aprovação do mestre.
+- Dados salvos no próprio Journal, em flags.multiverso-rpg.affinitiesV1; não muda páginas, notas, ficha, inventário ou regras.
+- Cada Diário conserva suas relações independentes. Relações direcionais, não espelhadas entre personagens.
+- Se um membro sair da Party, a relação previamente salva permanece como Outro Relacionamento, sem perder valores.
+- Retirada de uma relação extra requer confirmação; membros da equipe são administrados pelo mestre via Gerenciar Equipe.
+- Sem automatização de gastos, testes, efeitos sobre Sanidade, histórico ou aprovação nesta fase.
+- Mantidos sistemas anteriores de combate, habilidades, Party, criação e vinculação de diários.
+
+Verificações locais: testes de versionamento anteriores e novos, sintaxe dos arquivos JavaScript e integridade de ZIP. Ainda depende de validação dentro do Foundry 14.

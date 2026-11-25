@@ -1,0 +1,28 @@
+MULTIVERSO RPG 1.0.0 — FOUNDRY VTT 14
+======================================
+
+Primeira versão estável definida por Hope, derivada da v0.2.54.
+Todos os sistemas de combate, itens, habilidades, efeitos e inventário
+foram preservados sem alteração das regras ou da arquitetura.
+
+LIMPEZA DA DISTRIBUIÇÃO
+- O ZIP de instalação contém o sistema completo: main.mjs, system.json,
+  módulos, estilos, modelos de interface e tradução.
+- Centenas de relatórios e roteiros de versões antigas foram deixados
+  fora do ZIP de instalação. Permanecem preservados no backup do projeto.
+- Nenhum módulo executável foi retirado.
+
+OTIMIZAÇÃO CONSERVADORA
+- As buscas das abas Habilidades, Inventário e Efeitos usam uma espera
+  de 100 ms após digitação antes de reconstruir a lista inteira.
+- Isso reduz renderizações repetidas ao digitar, especialmente em
+  fichas com muitos registros. Não altera regras, resultados ou custos.
+
+TESTE APÓS INSTALAR
+1. Abra uma ficha e percorra as cinco abas.
+2. Digite rapidamente nas buscas de Habilidades, Inventário e Efeitos.
+3. Confira Testar habilidade e o comando de Usar/Ativar/Conjurar.
+4. Se houver regressão, restaure o ZIP v0.2.54.
+
+Testes automáticos e sintaxe passaram no ambiente local; não substituem
+a validação visual e funcional no Foundry de Hope.

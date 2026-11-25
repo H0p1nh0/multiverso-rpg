@@ -1,0 +1,21 @@
+MULTIVERSO RPG v1.0.17 — INVENTÁRIO DOS NPCs
+
+- Nova aba Inventário na ficha principal dos NPCs (somente Mestre).
+- Reutiliza o inventário real do Multiverso: Itens do tipo equipamento,
+  categorias, quantidades, peso/carga, moedas, equipar/guardar, usar,
+  configurar o Motor de Efeitos, transferir e descartar.
+- Cabeçalho do inventário ajustado para nome, categoria, tipo e Força do NPC,
+  sem exigir classe, subclasse, espécie ou nível de personagem.
+- Capacidade de carga aproveita a Força real do NPC (e efeitos existentes).
+- Interface integrada ao estilo da ficha de NPC e aba Criação continua separada.
+- Nenhum dado existente do NPC é removido ou migrado.
+- As fichas de personagens e os outros sistemas permanecem intactos.
+
+TESTE NO FOUNDRY
+1. Instale o sistema completo v1.0.17 sobre o anterior.
+2. Abra um NPC como Mestre: Combate > Inventário (aba no topo).
+3. Crie um equipamento, ajuste a quantidade e o peso no editor do Item.
+4. Equipe, use e teste um item com Motor de Efeitos configurado.
+5. Confira o funcionamento de Ações de Apoio, Relacionamentos e Criação.
+
+Atenção: validação final depende do Foundry do usuário.

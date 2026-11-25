@@ -1,0 +1,8 @@
+Multiverso RPG — v1.0.7 — correções de layout do Gerenciador de Equipes
+
+• Botão Gerenciar Equipe agora é filho da mesma faixa de ações Create Entry / Create Folder, ocupando toda a segunda linha sem criar um espaço vazio independente.
+• DialogV2 calcula altura com base no conteúdo já renderizado (height: auto), evitando abrir pequeno demais.
+• Janela limitada a 90% da altura da tela; corpo possui rolagem vertical em janelas menores.
+• Footer/Fechar permanece acessível quando o conteúdo é rolado.
+• Cadastro, validação e salvamento das equipes seguem inalterados.
+• O recurso ainda precisa de confirmação visual e funcional dentro do Foundry 14.

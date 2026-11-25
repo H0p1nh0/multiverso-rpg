@@ -1,0 +1,31 @@
+MULTIVERSO RPG v1.0.5 — GERENCIADOR DE EQUIPE (PARTY)
+
+Novo botão "Gerenciar Equipe" na aba Journals, logo abaixo dos botões de criar Journal/pasta.
+Visível somente para usuários GM (mestre).
+
+Funções do gerenciador:
+- Criar várias equipes e selecionar uma equipe cadastrada.
+- Renomear e excluir equipes com confirmação.
+- Adicionar e remover personagens existentes (Actor do tipo personagem).
+- Impedir que um personagem pertença a duas equipes simultaneamente.
+- Guardar composição de equipes na configuração de mundo partyRegistryV1.
+- Preservar o vínculo pelo ID do personagem, mesmo se seu nome mudar.
+- Não excluir fichas ao remover uma equipe ou um membro.
+
+Base: v1.0.4, sem restauração do código especial da Hoshuko.
+Não cria ou modifica Journals/diários, não altera as permissões de atores
+nem implementa Afinidades nesta etapa. Essas tarefas virão depois da Party.
+
+TESTE PRÁTICO NO FOUNDRY 14 (A SER FEITO POR HOPE)
+1. Instale o ZIP completo, recarregue o mundo e abra a aba Journals como mestre.
+   Esperado: botão Gerenciar Equipe abaixo de Create Entry/Create Folder.
+2. Entre com conta de jogador; o botão não deve aparecer.
+3. Como mestre, crie a equipe "Party Principal".
+4. Adicione dois personagens; feche e reabra a janela, e recarregue a página.
+   Esperado: a equipe e os dois membros continuam salvos.
+5. Renomeie um dos personagens na ficha. O gerenciador deve atualizar o nome,
+   pois o vínculo é pelo ID da ficha.
+6. Remova um membro e exclua a equipe. Nenhuma ficha deve ser excluída.
+
+VALIDAÇÃO LOCAL: sintaxe JS, testes de modelos e regras, testes anteriores e
+integridade do ZIP. Não é aprovação de uso real no Foundry.

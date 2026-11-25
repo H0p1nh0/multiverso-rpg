@@ -1,0 +1,26 @@
+MULTIVERSO RPG v1.0.15 — FICHA DE NPC (VISUAL + JANELA DE CRIAÇÃO)
+
+1. A aba "Criação" virou botão, que abre uma janela independente de configuração.
+   - É o mesmo Ator NPC. Não cria uma cópia e não perde dados.
+   - A janela de criação utiliza os mesmos campos e validações anteriores.
+   - Categoria e tipo de NPC podem ser escolhidos na parte superior.
+
+2. Reorganização visual da ficha de combate:
+   - Seis atributos em cartões alinhados, clicáveis para rolagens.
+   - Melhor alinhamento, hierarquia e espaço entre painéis.
+   - Perícias clicáveis com aparência consistente com a ficha.
+   - Cabeçalho identificado e fixo ao rolar a ficha.
+
+3. Correção de carregamento de estilos:
+   - CSS v1.0.15 com carregamento adicional por URL versionada,
+     evitando que o cache do Foundry exiba controles sem formatação.
+
+4. Funcionalidades preservadas:
+   - Quatro Fluxos (Vida, STA, Mana, Sanidade), incluindo valores atuais.
+   - Sistema de categorias, pontos, perícias, treinamento, especializações.
+   - Motor original de efeitos para Skills/Técnicas e Ações de Apoio.
+   - Conteúdo da v1.0.13 e conversão das habilidades antigas.
+   - Party, Journals automáticos e Afinidades.
+
+OBS.: A interface foi inspecionada em uma prévia de navegador. Testar a
+instalação no Foundry 14 para verificar a integração completa.

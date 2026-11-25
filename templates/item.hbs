@@ -1,0 +1,76 @@
+<div class="mv-item-fields mv-item-native mv-item-editor-{{item.type}} {{#if isNegative}}mv-item-negative{{/if}}">
+  {{#if isSkill}}
+    {{#if isTraitSource}}
+      <div class="mv-trait-source-heading"><span><i class="fa-solid fa-layer-group"></i> Efeitos vinculados</span><h2>{{item.name}}</h2><small>Os efeitos deste registro utilizam o motor original de Skills e Técnicas.</small></div>
+    {{else}}
+      <div class="mv-skill-hero"><span class="mv-skill-hero-type">{{typeLabel}}</span><label class="mv-skill-hero-name">{{#if isManualEffect}}Nome do efeito{{else}}Nome da habilidade{{/if}}<input type="text" name="name" value="{{item.name}}" /></label></div>
+    {{/if}}
+    <div class="mv-original-skill-editor" data-mv-skill-editor></div>
+  {{else}}
+    {{#if traitEffects}}
+      <header class="mv-trait-editor-hero">
+        <div class="mv-trait-editor-kicker">CARACTERÍSTICA DO PERSONAGEM</div>
+        <h2>{{typeLabel}}</h2>
+        <p>{{traitHint}}</p>
+        <label class="mv-trait-main-name">Nome do registro<input type="text" name="name" value="{{item.name}}" /></label>
+      </header>
+      <nav class="mv-trait-main-tabs" aria-label="Editar característica">
+        <button type="button" class="is-active" data-mv-trait-tab="descricao" aria-selected="true">Descrição</button>
+        <button type="button" data-mv-trait-tab="efeitos" aria-selected="false">Efeitos</button>
+      </nav>
+      <section class="mv-trait-page" data-mv-trait-page="descricao">
+        <label class="mv-trait-description">Descrição da característica<textarea name="system.descricao" rows="8" placeholder="Descreva a origem, as regras ou o funcionamento deste registro...">{{system.descricao}}</textarea></label>
+        {{#if isTrait}}
+          <label class="mv-trait-kind-label">Natureza do traço
+            <select name="system.categoria"><option value="vantagem">Vantagem</option><option value="desvantagem">Desvantagem</option></select>
+          </label>
+        {{/if}}
+      </section>
+      <section class="mv-trait-page" data-mv-trait-page="efeitos" hidden>
+        <div class="mv-trait-effect-target-panel">
+          <p><strong>Efeitos próprios de {{item.name}}</strong></p>
+          <p>Configure abaixo os efeitos exclusivos desta característica. Não é necessário selecionar ou criar outro registro.</p>
+        </div>
+        <div class="mv-trait-source-editor" data-mv-trait-source-editor>
+          <div data-mv-skill-editor></div>
+        </div>
+        <p class="mv-trait-source-placeholder" data-mv-trait-source-placeholder hidden></p>
+      </section>
+    {{else}}
+      {{#if isEquipment}}
+        <header class="mv-item-equipment-head"><button type="button" data-mv-item-image title="Trocar imagem do item" aria-label="Trocar imagem do item"><img src="{{item.img}}" alt="Imagem de {{item.name}}"/><small><i class="fa-solid fa-image"></i> Alterar</small></button><div><span>ITEM DO INVENTÁRIO</span><label>Nome do item<input type="text" name="name" value="{{item.name}}" maxlength="120"/></label></div></header>
+        <nav class="mv-item-equipment-tabs" aria-label="Configurar item">
+          <button type="button" data-mv-item-tab="descricao" class="is-active" aria-selected="true">Descrição</button>
+
+          <button type="button" data-mv-item-tab="efeitos" aria-selected="false">Efeitos</button>
+        </nav>
+        <div class="mv-item-motor-launch">
+          <div class="mv-item-motor-launch-copy">
+            <span><i class="fa-solid fa-gears" aria-hidden="true"></i> MOTOR DO ITEM</span>
+            <p>Ataques, danos, poções, cargas, proteções e habilidades — em uma janela própria.</p>
+          </div>
+          <button type="button" data-mv-open-item-motor><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Abrir Motor do Item</button>
+        </div>
+        <section data-mv-item-page="descricao" class="mv-item-equipment-page mv-im-description">
+          <div class="mv-im-meta"><h3><i class="fa-solid fa-box-open"></i> Propriedades de Inventário</h3><div class="mv-im-grid">
+            <label>Categoria<select name="system.categoria"><option value="arma">Armas</option><option value="protecao">Armaduras e proteções</option><option value="consumivel">Consumíveis</option><option value="geral">Itens gerais</option><option value="armazenamento">Armazenamento</option></select></label>
+            <label>Raridade<input name="system.raridade" value="{{system.raridade}}"/></label>
+            <label>Quantidade<input type="number" name="system.quantidade" min="0" step="1" value="{{system.quantidade}}"/></label>
+            <label>Peso por unidade<input type="number" name="system.peso" min="0" step="any" value="{{system.peso}}"/></label>
+            <label>Capacidade de armazenamento extra<input type="number" name="system.props.capacidadeExtra" min="0" step="any" value="{{system.props.capacidadeExtra}}"/></label>
+          </div></div>
+          <label class="mv-trait-description">Descrição do item<textarea name="system.descricao" rows="9" placeholder="Aparência, história e detalhes narrativos do objeto...">{{system.descricao}}</textarea></label>
+        </section>
+        <section data-mv-item-page="efeitos" class="mv-item-equipment-page" hidden>
+          <div class="mv-item-effects-intro"><strong><i class="fa-solid fa-sparkles"></i> Efeitos especiais</strong><p>Cadastre seus efeitos abaixo. Clique em <b>Criar efeito</b> ou <b>Editar</b> para abrir o editor mecânico completo em outra janela. Cada efeito tem um gatilho individual de ativação.</p></div>
+          <p data-mv-item-effects-loading class="mv-original-status">Abra esta aba para configurar os efeitos especiais.</p>
+          <div data-mv-item-effects-source></div>
+        </section>
+      {{else}}
+        <header class="mv-trait-editor-hero"><div class="mv-trait-editor-kicker">{{typeLabel}}</div><h2>{{typeLabel}}</h2></header>
+        <label class="mv-trait-description">Descrição<textarea name="system.descricao" rows="6">{{system.descricao}}</textarea></label>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+  
+</div>

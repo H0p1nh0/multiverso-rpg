@@ -1,0 +1,140 @@
+<section class="mv-native">
+<header class="mv-heading"><h2>Multiverso RPG</h2><span>Ficha de Personagem</span></header>
+<section class="mv-character-hero" aria-label="Identidade do personagem">
+  <div class="mv-hero-portrait">
+    <img class="mv-hero-portrait-image" src="{{portrait}}" alt="Retrato de {{actor.name}}" />
+    <span class="mv-hero-portrait-corner mv-hero-corner-tl" aria-hidden="true">✥</span>
+    <span class="mv-hero-portrait-corner mv-hero-corner-tr" aria-hidden="true">✥</span>
+    <span class="mv-hero-portrait-corner mv-hero-corner-bl" aria-hidden="true">✥</span>
+    <span class="mv-hero-portrait-corner mv-hero-corner-br" aria-hidden="true">✥</span>
+    <button type="button" class="mv-hero-portrait-button" data-mv-portrait-change {{#unless canEditHero}}disabled{{/unless}} title="Escolher o retrato do personagem">
+      <i class="fa-solid fa-image" aria-hidden="true"></i> ALTERAR RETRATO
+    </button>
+  </div>
+  <div class="mv-hero-information">
+    <div class="mv-hero-name-row">
+      <i class="fa-solid fa-compass mv-hero-name-icon" aria-hidden="true"></i>
+      <div class="mv-hero-name-block">
+        <label for="mv-hero-name-{{actor.id}}">NOME DO PERSONAGEM</label>
+        <input id="mv-hero-name-{{actor.id}}" class="mv-hero-name" type="text" name="name" value="{{actor.name}}" placeholder="Nome do personagem" {{#unless canEditHero}}readonly{{/unless}} aria-label="Nome do personagem" />
+      </div>
+      <span class="mv-hero-name-ornament" aria-hidden="true">✦</span>
+    </div>
+    <div class="mv-hero-details">
+      <div class="mv-hero-detail mv-hero-detail-wide"><span class="mv-hero-detail-label"><i class="fa-solid fa-hat-wizard" aria-hidden="true"></i> CLASSE / SUBCLASSE</span><strong class="mv-hero-detail-value">{{heroClassFull}}</strong></div>
+      <div class="mv-hero-detail"><span class="mv-hero-detail-label"><i class="fa-solid fa-dna" aria-hidden="true"></i> ESPÉCIE</span><strong class="mv-hero-detail-value">{{heroSpecies}}</strong></div>
+      <label class="mv-hero-detail" for="mv-hero-level-{{actor.id}}"><span class="mv-hero-detail-label"><i class="fa-solid fa-medal" aria-hidden="true"></i> NÍVEL</span><input id="mv-hero-level-{{actor.id}}" class="mv-hero-input mv-hero-input-level" type="number" name="system.nivelpersonagem" min="1" step="1" value="{{heroLevel}}" {{#unless canEditHero}}readonly{{/unless}} /></label>
+      <label class="mv-hero-detail mv-hero-detail-wide" for="mv-hero-player-{{actor.id}}"><span class="mv-hero-detail-label"><i class="fa-solid fa-user" aria-hidden="true"></i> JOGADOR</span><input id="mv-hero-player-{{actor.id}}" class="mv-hero-input" type="text" name="system.jogadorpersonagem" value="{{system.jogadorpersonagem}}" placeholder="—" title="Nome do jogador" {{#unless canEditHero}}readonly{{/unless}} /></label>
+      <label class="mv-hero-detail" for="mv-hero-height-{{actor.id}}"><span class="mv-hero-detail-label"><i class="fa-solid fa-ruler-vertical" aria-hidden="true"></i> ALTURA</span><input id="mv-hero-height-{{actor.id}}" class="mv-hero-input" type="text" name="system.alturapersonagem" value="{{system.alturapersonagem}}" placeholder="—" title="Altura do personagem (ex.: 1,78 m)" {{#unless canEditHero}}readonly{{/unless}} /></label>
+      <label class="mv-hero-detail" for="mv-hero-weight-{{actor.id}}"><span class="mv-hero-detail-label"><i class="fa-solid fa-weight-scale" aria-hidden="true"></i> PESO</span><input id="mv-hero-weight-{{actor.id}}" class="mv-hero-input" type="text" name="system.pesopersonagem" value="{{system.pesopersonagem}}" placeholder="—" title="Peso do personagem (ex.: 72 kg)" {{#unless canEditHero}}readonly{{/unless}} /></label>
+    </div>
+  </div>
+</section>
+<nav class="mv-tabs-nav" aria-label="Abas da ficha"><button type="button" class="mv-tab-button is-active" data-mv-tab="geral">Visão Geral</button><button type="button" class="mv-tab-button" data-mv-tab="combate">Combate</button><button type="button" class="mv-tab-button" data-mv-tab="inventario">Inventário</button><button type="button" class="mv-tab-button" data-mv-tab="habilidades">Habilidades</button><button type="button" class="mv-tab-button" data-mv-tab="efeitos">Efeitos</button></nav>
+<section class="mv-rest-global" aria-label="Interlúdios do personagem">
+  <div class="mv-rest-heading" aria-hidden="true"><span></span><h3>INTERLÚDIOS</h3><span></span></div>
+  <div class="mv-rest-actions"><button type="button" class="mv-rest-button mv-rest-short" data-mv-rest="curto"><i class="fa-solid fa-mug-hot" aria-hidden="true"></i><span><strong>DESCANSO CURTO</strong><small>30 min a 1 h • recuperação parcial</small></span></button><button type="button" class="mv-rest-button mv-rest-intensive" data-mv-rest="intensivo"><i class="fa-solid fa-moon" aria-hidden="true"></i><span><strong>DESCANSO INTENSIVO</strong><small>PV, PM e STA completos + 1d12 SAN</small></span></button></div>
+</section>
+<div class="mv-tab-page is-active" data-mv-page="geral"><div data-mv-vision-mount></div></div>
+<section class="mv-tab-page mv-combat-v215" data-mv-page="combate">
+  <div class="mv-combat-dashboard">
+    <div class="mv-combat-command-top">
+      <section class="mv-combat-identity mv-combat-panel" aria-label="Identidade do combatente">
+        <img class="mv-combat-identity-portrait" src="{{portrait}}" alt="Retrato de {{actor.name}}" />
+        <div class="mv-combat-identity-details">
+          <span class="mv-combat-kicker">PERSONAGEM</span>
+          <h3>{{actor.name}}</h3>
+          <strong>{{heroClassFull}}</strong>
+          <span>{{heroSpecies}} <span aria-hidden="true">✦</span> Nível {{heroLevel}}</span>
+        </div>
+      </section>
+      <section class="mv-combat-panel mv-combat-attributes" aria-label="Atributos e comandos de combate">
+        <h3 class="mv-combat-panel-heading"><i class="fa-solid fa-compass" aria-hidden="true"></i> ATRIBUTOS DE COMBATE</h3>
+        <div class="mv-nativo-topo-standalone mv-combat-attribute-cards">
+          <button type="button" class="mv-combate-standalone-action" data-mv-combate-acao="iniciativa" title="Rolar iniciativa">
+            <i class="fa-solid fa-bolt" aria-hidden="true"></i><span>INICIATIVA</span><strong>{{combatInitiative}}</strong><small>Rolar teste</small></button>
+          <button type="button" class="mv-combate-standalone-action" data-mv-combate-acao="esquiva" title="Rolar esquiva">
+            <i class="fa-solid fa-person-running" aria-hidden="true"></i><span>ESQUIVA</span><strong>{{esquivaFinal}}</strong><small>Rolar teste</small></button>
+          <button type="button" class="mv-combate-standalone-action" data-mv-combate-acao="bloqueio" title="Rolar bloqueio">
+            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i><span>BLOQUEIO</span><strong>{{bloqueioFinal}}</strong><small>Rolar teste</small></button>
+          <div class="mv-combate-standalone-info" data-mv-combate-acao="reacao" role="button" tabindex="0" title="Clique esquerdo: gastar reação; clique direito: recuperar">
+            <i class="fa-solid fa-rotate" aria-hidden="true"></i><span>REAÇÕES</span><strong>{{combatLegacy.reacoes}}</strong><small>Até seu turno</small></div>
+          <div class="mv-combate-standalone-info" data-mv-combate-acao="deslocamento" role="button" tabindex="0" title="Editar deslocamento restante">
+            <i class="fa-solid fa-shoe-prints" aria-hidden="true"></i><span>DESLOCAMENTO</span><strong>{{combatLegacy.deslocamento}}</strong><small>{{combatLegacy.speedSubtitle}}</small></div>
+          {{#if combatSense.enabled}}
+          <div class="mv-combat-special-sense" title="Sentido especial configurado na engrenagem da ficha">
+            <i class="fa-solid fa-eye" aria-hidden="true"></i><span>SENTIDO ESPECIAL</span><strong>{{combatSense.name}}</strong><small>{{combatSense.range}}</small></div>
+          {{/if}}
+        </div>
+      </section>
+    </div>
+
+    <section class="mv-combat-panel mv-combat-economy">
+      <h3 class="mv-combat-panel-heading"><i class="fa-solid fa-hourglass-half" aria-hidden="true"></i> ECONOMIA DE AÇÕES</h3>
+      <div class="mv-nativo-acoes-turno" {{#unless combatLegacy.active}}hidden{{/unless}}>
+        <div class="mv-combate-acoes-grid">
+          <div class="mv-combate-acao-turno {{#if combatLegacy.acaoOff}}inativa{{/if}}" data-mv-native-acao="padrao" role="button" tabindex="0" title="Clique esquerdo: gastar Padrão; clique direito: recuperar">
+            <i class="fa-solid fa-hand-fist" aria-hidden="true"></i><span><strong>AÇÃO PADRÃO</strong><small>Usar ou recuperar</small></span><b>{{combatLegacy.acao}}</b></div>
+          <div class="mv-combate-acao-turno {{#if combatLegacy.movimentoOff}}inativa{{/if}}" data-mv-native-acao="movimento" role="button" tabindex="0" title="Primeiro Movimento é independente; segundo pode consumir Padrão. Clique direito recupera">
+            <i class="fa-solid fa-person-running" aria-hidden="true"></i><span><strong>AÇÃO DE MOVIMENTO</strong><small>2º uso converte Padrão</small></span><b>{{combatLegacy.movimento}}</b></div>
+          <div class="mv-combate-acao-turno {{#if combatLegacy.completaOff}}inativa{{/if}}" data-mv-native-acao="completa" role="button" tabindex="0" title="Consome Padrão e Movimento. Clique direito recupera apenas gasto da Completa">
+            <i class="fa-solid fa-arrows-spin" aria-hidden="true"></i><span><strong>AÇÃO COMPLETA</strong><small>Exige Padrão + Movimento</small></span><b>{{combatLegacy.completa}}</b></div>
+          <div class="mv-combate-acao-turno {{#if combatLegacy.bonusOff}}inativa{{/if}}" data-mv-native-acao="bonus" role="button" tabindex="0" title="Clique esquerdo: gastar Bônus; clique direito: recuperar">
+            <i class="fa-solid fa-star" aria-hidden="true"></i><span><strong>AÇÃO BÔNUS</strong><small>Independente das demais</small></span><b>{{combatLegacy.bonus}}</b></div>
+        </div>
+      </div>
+      {{#unless combatLegacy.active}}<p class="mv-combat-empty-inline">Os controles de ações aparecem quando o personagem participa de um combate iniciado.</p>{{/unless}}
+    </section>
+
+    <section class="mv-combat-panel mv-combat-favorites-panel" aria-label="Ações favoritas">
+      <div class="mv-combat-panel-heading mv-combat-heading-row"><h3><i class="fa-solid fa-star" aria-hidden="true"></i> AÇÕES FAVORITAS</h3>
+        <button type="button" class="mv-combat-small-button" data-mv-combat-manage-favorites><i class="fa-solid fa-sliders" aria-hidden="true"></i> Gerenciar favoritos</button></div>
+      <div class="mv-combat-favorites-grid">
+        {{#each combatFavorites}}
+        <div class="mv-combat-fav-card">
+          <img src="{{img}}" alt="" />
+          <div class="mv-combat-fav-info"><strong title="{{name}}">{{name}}</strong><small>{{typeLabel}}</small>{{#if activity}}<small>{{activity}}</small>{{/if}}</div>
+          {{#if canUse}}<button type="button" class="mv-combat-fav-cast" data-mv-combat-use-favorite="{{id}}" title="Usar {{name}}" aria-label="Usar {{name}}"><i class="fa-solid fa-play" aria-hidden="true"></i> Usar</button>{{/if}}
+          {{#if canConjure}}<button type="button" class="mv-combat-fav-cast" data-mv-combat-cast-favorite="{{id}}" title="Conjurar uma habilidade de {{name}}" aria-label="Conjurar habilidade de {{name}}"><i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i> Conjurar</button>{{/if}}
+          <button type="button" class="mv-combat-fav-edit" data-mv-combat-edit-favorite="{{id}}" title="Abrir {{name}}" aria-label="Abrir {{name}}"><i class="fa-solid fa-ellipsis" aria-hidden="true"></i></button>
+        </div>
+        {{else}}
+        <p class="mv-combat-favorites-empty">Escolha Skills e Técnicas para acessá-las diretamente durante o combate.</p>
+        {{/each}}
+      </div>
+    </section>
+
+    <div class="mv-combat-details-columns">
+      <section class="mv-combat-panel mv-combat-turn-order">
+        <h3 class="mv-combat-panel-heading"><i class="fa-solid fa-list-ol" aria-hidden="true"></i> ORDEM DE TURNOS{{#if combatLegacy.round}} <small>Rodada {{combatLegacy.round}}</small>{{/if}}</h3>
+        <div class="mv-combat-turn-list">
+          {{#each combatLegacy.order}}
+          <div class="mv-combat-turn-row {{#if active}}is-current{{/if}}"><span class="mv-combat-turn-position">{{pos}}</span><img src="{{img}}" alt="" /><strong>{{name}}</strong><span class="mv-combat-turn-initiative">{{initiative}}</span>{{#if active}}<em>Turno atual</em>{{/if}}</div>
+          {{else}}<p class="mv-combat-empty-inline">Nenhuma iniciativa registrada no encontro.</p>{{/each}}
+        </div>
+      </section>
+      <section class="mv-combat-panel mv-combat-conditions-panel">
+        <div class="mv-combat-panel-heading mv-combat-heading-row"><h3><i class="fa-solid fa-shield-heart" aria-hidden="true"></i> CONDIÇÕES E EFEITOS</h3><button type="button" class="mv-combat-small-button" data-mv-combat-open-effects>Abrir Efeitos <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div>
+        <h4>Condições ativas</h4>
+        <div class="mv-combat-condition-list">
+          {{#each combatConditions}}<div class="mv-combat-condition-row"><img src="{{img}}" alt="" /><span><strong>{{name}}</strong><small>{{description}}</small></span></div>
+          {{else}}<p class="mv-combat-empty-inline">Nenhuma condição ativa.</p>{{/each}}
+        </div>
+        <h4>Efeitos ativos e temporários</h4>
+        <div class="mv-combat-condition-list">
+          {{#each combatActiveEffects}}<div class="mv-combat-condition-row"><img src="{{img}}" alt="" /><span><strong>{{name}}</strong><small>{{description}}</small></span></div>
+          {{else}}<p class="mv-combat-empty-inline">Nenhum efeito ativo.</p>{{/each}}
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+<section class="mv-tab-page" data-mv-page="inventario" aria-label="Inventário do personagem"><div data-mv-inventory-mount></div></section>
+
+<section class="mv-tab-page" data-mv-page="habilidades" aria-label="Habilidades do personagem"><div data-mv-abilities-mount></div></section>
+
+<section class="mv-tab-page" data-mv-page="efeitos" aria-label="Efeitos e proteções do personagem">
+  <div data-mv-effects-overview></div>
+</section>
+</section>

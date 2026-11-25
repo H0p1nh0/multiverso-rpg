@@ -1,0 +1,10 @@
+Multiverso RPG v1.0.11 — Correção da exibição do botão Afinidades no Journal
+
+Base: v1.0.10.
+
+- Busca do botão Add Page ampliada para o Foundry 14 (ação createPageDialog ou rótulo).
+- Inserção acima da barra de navegação sem exigir classes fixas `.sidebar` ou `aside`.
+- Compatibilidade com o render em partes do JournalEntrySheet V2, com segunda tentativa após render.
+- Mantém bloqueio para Journals não vinculados e usuários sem permissão; não duplica botão.
+- Dados de afinidades, permissões, regras de Party, criação e vinculação de diários inalterados.
+- Em caso de teste, abrir um diário vinculado (Marie) e conferir botão acima de Add Page.

@@ -1,0 +1,133 @@
+<div class="mv-npc" aria-label="Ficha Rápida de NPC">
+  <header class="mv-npc-hero">
+    <div class="mv-npc-portrait"><img src="{{portrait}}" alt="Retrato de {{actor.name}}"><button type="button" data-npc-action="portrait" title="Trocar retrato" {{#unless canEdit}}disabled{{/unless}}><i class="fa-solid fa-camera"></i></button></div>
+    <div class="mv-npc-identity">
+      <span class="mv-npc-eyebrow">MULTIVERSO RPG · FICHA RÁPIDA DE NPC</span>
+      <input class="mv-npc-name" type="text" name="name" value="{{actor.name}}" aria-label="Nome do NPC" {{#unless canEdit}}readonly{{/unless}}>
+      <div class="mv-npc-subtitle"><span>STA + Mana habilitadas</span></div><div class="mv-npc-header-config"><label>Categoria<select name="system.npcCategoria" {{#unless canEdit}}disabled{{/unless}}>{{#each categories}}<option value="{{id}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label><label>Tipo de NPC<select name="system.npcRole" {{#unless canEdit}}disabled{{/unless}}>{{#each roles}}<option value="{{name}}" {{#if selected}}selected{{/if}}>{{name}}</option>{{/each}}</select></label></div>
+    </div>
+    <div class="mv-npc-hero-tools"><span><i class="fa-solid fa-lock"></i> Área do Mestre</span><button type="button" class="mv-npc-hero-config-cta" data-npc-action="open-creation"><i class="fa-solid fa-gear"></i> Configurar NPC <i class="fa-solid fa-up-right-from-square"></i></button><button type="button" data-npc-action="fill" {{#unless canEdit}}disabled{{/unless}}><i class="fa-solid fa-arrows-rotate"></i> Restaurar Fluxos</button></div>
+  </header>
+  <nav class="mv-npc-tabs" aria-label="Seções do NPC">
+    <button type="button" data-npc-tab="combate" class="is-active"><i class="fa-solid fa-shield-halved"></i> Combate</button>
+    {{#if canEdit}}<button type="button" data-npc-tab="inventario"><i class="fa-solid fa-box-open"></i> Inventário</button>{{/if}}
+    {{#if canEdit}}<button type="button" data-npc-tab="relacionamentos"><i class="fa-solid fa-heart-circle-check"></i> Relacionamentos</button>{{/if}}
+    <button type="button" class="mv-npc-open-config" data-npc-action="open-creation"><i class="fa-solid fa-sliders"></i> Criação <i class="fa-solid fa-up-right-from-square mv-npc-external-icon"></i></button>
+    <button type="button" data-npc-tab="apoio"><i class="fa-solid fa-handshake-angle"></i> Ações de Apoio</button>
+  </nav>
+  <main class="mv-npc-main">
+    <section class="mv-npc-panel" data-npc-panel="combate"><section class="mv-npc-attributes-top"><div class="mv-npc-attributes-caption"><h3><i class="fa-solid fa-dice-d20"></i> Atributos</h3><span><i class="fa-solid fa-arrow-pointer"></i> Clique para rolar</span></div><div class="mv-npc-attribute-buttons">{{#each attributes}}<button type="button" class="mv-npc-attr-tile" data-npc-action="roll-attribute" data-attribute="{{key}}" title="Rolar {{label}}"><span class="mv-npc-attr-top"><small>{{short}}</small><i class="fa-solid fa-dice-d20"></i></span><strong>{{value}}</strong><span class="mv-npc-attr-name">{{label}}</span></button>{{/each}}</div></section>
+      <section class="mv-npc-defenses" aria-label="Defesas e Reações do NPC">
+        <div class="mv-npc-defenses-title"><h3><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Defesas e Reações</h3><span>Mesmo sem turno na iniciativa, o NPC pode ser atacado e se defender</span></div>
+        <div class="mv-npc-defenses-grid">
+          <button type="button" class="mv-npc-defense-tile mv-npc-defense-block" data-mv-combate-acao="bloqueio" title="Rolar Bloqueio: Resistência + bônus de armadura e passivas. Consome uma Reação em combate.">
+            <span class="mv-npc-defense-icon"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i></span><span class="mv-npc-defense-copy"><strong>Bloqueio</strong><small>Resistência + equipamento</small></span><b>{{npcDefenses.bloqueio.total}}</b><i class="fa-solid fa-dice-d20 mv-npc-defense-die" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="mv-npc-defense-tile mv-npc-defense-dodge" data-mv-combate-acao="esquiva" title="Rolar Esquiva: Agilidade + bônus de armadura e passivas. Consome uma Reação em combate.">
+            <span class="mv-npc-defense-icon"><i class="fa-solid fa-person-running" aria-hidden="true"></i></span><span class="mv-npc-defense-copy"><strong>Esquiva</strong><small>Agilidade + equipamentos</small></span><b>{{npcDefenses.esquiva.total}}</b><i class="fa-solid fa-dice-d20 mv-npc-defense-die" aria-hidden="true"></i>
+          </button>
+          <div class="mv-npc-defense-tile mv-npc-defense-reactions {{#unless npcReactions.ok}}{{#unless npcReactions.outside}}is-spent{{/unless}}{{/unless}}" data-mv-combate-acao="reacao" role="button" tabindex="0" title="Clique esquerdo: gastar uma Reação. Clique direito ou Shift+clique: recuperar uma.">
+            <span class="mv-npc-defense-icon"><i class="fa-solid fa-rotate" aria-hidden="true"></i></span><span class="mv-npc-defense-copy"><strong>Reações</strong><small>{{#if npcReactions.indirectNPC}}Recarrega a cada rodada{{else}}Recarrega no próprio turno{{/if}}</small></span><b>{{npcReactions.current}}/{{npcReactions.max}}</b><i class="fa-solid fa-rotate-left mv-npc-defense-die" aria-hidden="true"></i>
+          </div>
+        </div>
+      </section>
+      <div class="mv-npc-flux-grid">
+        {{#each fluxes}}
+          <div class="mv-npc-flux mv-npc-flux-{{color}}">
+            <div class="mv-npc-flux-title"><i class="fa-solid fa-{{icon}}"></i> {{label}}</div>
+            <div class="mv-npc-flux-values"><input type="number" min="0" step="1" data-npc-flux-current="{{id}}" aria-label="{{label}} atual" value="{{current}}" {{#unless ../canEdit}}readonly{{/unless}}><span>/ {{max}}</span></div>
+          </div>
+        {{/each}}
+      </div>
+      <div class="mv-npc-combat-columns">
+        <section class="mv-npc-card"><div class="mv-npc-card-head"><h3><i class="fa-solid fa-crosshairs"></i> Perícias de combate e consulta</h3><span>Valores finais</span></div>
+          <div class="mv-npc-skills-quick">
+            {{#each skills}}
+            <button type="button" class="mv-npc-skill-line {{#if hasPassive}}mv-npc-has-passive{{/if}}" data-npc-action="roll-skill" data-skill="{{key}}" title="{{displayTitle}}"><span>{{label}}</span><b>{{finalSigned}}</b><i class="fa-solid fa-dice-d20"></i></button>
+            {{/each}}
+          </div>
+        </section>
+        <section class="mv-npc-card"><div class="mv-npc-card-head"><h3><i class="fa-solid fa-bolt"></i> Habilidades</h3><span>{{abilitiesCount}} / {{abilityBudget}} sugeridas</span></div>
+          {{#each combatAbilities}}<details class="mv-npc-ability"><summary><span class="mv-npc-ability-name">{{name}}</span><span class="mv-npc-cost">{{costLabel}}</span><span class="mv-npc-action-tag">{{typeLabel}}</span></summary>{{#if description}}<p>{{description}}</p>{{/if}}<small>Ação: {{actionLabel}}</small>{{#if ../canEdit}}<div class="mv-npc-ability-controls"><button type="button" data-npc-action="use-engine-ability" data-id="{{id}}" class="mv-npc-primary"><i class="fa-solid fa-play"></i> Usar motor</button><button type="button" data-npc-action="edit-engine-ability" data-id="{{id}}"><i class="fa-solid fa-gears"></i> Editar efeitos</button><button type="button" data-npc-action="remove-engine-ability" data-id="{{id}}" title="Excluir"><i class="fa-solid fa-trash"></i></button></div>{{/if}}</details>{{/each}}
+          {{#each legacyAbilities}}<details class="mv-npc-ability mv-npc-legacy"><summary><span class="mv-npc-ability-name">{{name}}</span><span class="mv-npc-action-tag">Cadastro antigo</span></summary>{{#if summary}}<p>{{summary}}</p>{{/if}}{{#if description}}<p>{{description}}</p>{{/if}}<p>Dados da v1.0.13 preservados. A conversão permite configurar os efeitos no motor original.</p>{{#if ../canEdit}}<div class="mv-npc-ability-controls"><button type="button" data-npc-action="convert-legacy-ability" data-id="{{id}}" class="mv-npc-primary">Conectar ao motor</button><button type="button" data-npc-action="use-ability" data-id="{{id}}">Usar anterior</button></div>{{/if}}</details>{{/each}}
+          {{#unless abilitiesCount}}<p class="mv-npc-empty">Nenhuma habilidade cadastrada. Use uma Skill ou Técnica com o motor de efeitos.</p>{{/unless}}
+          {{#if canEdit}}<button type="button" data-npc-action="add-engine-ability" class="mv-npc-add"><i class="fa-solid fa-plus"></i> Adicionar Skill / Técnica com Motor de Efeitos</button>{{/if}}
+        </section>
+      </div>
+      {{#if canEdit}}
+      <section class="mv-npc-card mv-npc-note"><h3><i class="fa-solid fa-note-sticky"></i> Anotações rápidas do mestre</h3><textarea name="system.npcNotes" rows="3" maxlength="8000" placeholder="Táticas, fraquezas, efeitos ativos e lembretes...">{{system.npcNotes}}</textarea></section>
+      {{/if}}
+    </section>
+    {{#if canEdit}}
+    <section class="mv-npc-panel mv-npc-inventory-panel" data-npc-panel="inventario" hidden>
+      <div class="multiverso-personagem mv-npc-inventory-host"><div data-mv-inventory-mount></div></div>
+    </section>
+    <section class="mv-npc-panel mv-npc-relations-panel" data-npc-panel="relacionamentos" hidden>
+      <header class="mv-npc-rel-hero"><span class="mv-npc-rel-hero-icon"><i class="fa-solid fa-heart-circle-check" aria-hidden="true"></i></span><div><h2>Relacionamentos de {{actor.name}}</h2><p>O que <strong>este NPC sente</strong> por cada personagem. Os valores são individuais e visíveis somente para o mestre nesta ficha.</p></div></header>
+      <section class="mv-npc-rel-section">
+        <div class="mv-npc-rel-heading"><h3><i class="fa-solid fa-users"></i> Personagens das equipes</h3><span>{{npcRelations.party.length}} membro(s)</span></div>
+        <p class="mv-npc-rel-intro">As equipes vêm do Gerenciador de Equipes. Cada personagem aparece automaticamente; clique nas bolinhas para alterar Afeição ou Admiração.</p>
+        <div class="mv-npc-rel-cards">{{#each npcRelations.party}}<article class="mv-npc-rel-card">
+  <div class="mv-npc-rel-person"><img src="{{image}}" alt="" loading="lazy"><div class="mv-npc-rel-person-copy"><strong>{{name}}</strong><small>{{#if party}}Equipe: {{party}}{{else}}Relacionamento extra{{/if}}</small></div>{{#unless party}}<button type="button" class="mv-npc-rel-remove" data-npc-action="relation-remove" data-id="{{key}}" title="Remover este relacionamento"><i class="fa-solid fa-trash"></i></button>{{else}}<span class="mv-npc-rel-party-tag">Party</span>{{/unless}}</div>
+  <div class="mv-npc-rel-fields">
+    <div class="mv-npc-rel-track mv-npc-rel-affection" data-npc-relation-track data-current="{{afeicao}}"><div class="mv-npc-rel-field-label"><i class="fa-solid fa-heart"></i> Afeição</div><div class="mv-npc-rel-dot-row">{{#each afeicaoDots}}<button type="button" class="mv-npc-rel-dot {{#if active}}is-active{{/if}}" data-npc-action="relation-level" data-id="{{../key}}" data-field="afeicao" data-level="{{level}}" aria-label="Afeição do NPC por {{../name}}: nível {{level}} de 3" aria-pressed="{{selected}}" title="Afeição {{level}}/3 (clique novamente para zerar)"><span></span></button>{{/each}}</div></div>
+    <div class="mv-npc-rel-track mv-npc-rel-admiration" data-npc-relation-track data-current="{{admiracao}}"><div class="mv-npc-rel-field-label"><i class="fa-solid fa-star"></i> Admiração</div><div class="mv-npc-rel-dot-row">{{#each admiracaoDots}}<button type="button" class="mv-npc-rel-dot {{#if active}}is-active{{/if}}" data-npc-action="relation-level" data-id="{{../key}}" data-field="admiracao" data-level="{{level}}" aria-label="Admiração do NPC por {{../name}}: nível {{level}} de 3" aria-pressed="{{selected}}" title="Admiração {{level}}/3 (clique novamente para zerar)"><span></span></button>{{/each}}</div></div>
+  </div>
+</article>
+{{else}}<div class="mv-npc-rel-empty">Nenhum personagem cadastrado em uma equipe. Use <strong>Gerenciar Equipe</strong> na aba Diários.</div>{{/each}}</div>
+      </section>
+      <section class="mv-npc-rel-section">
+        <div class="mv-npc-rel-heading"><h3><i class="fa-solid fa-address-book"></i> Outros relacionamentos</h3><span>{{npcRelations.others.length}} cadastrado(s)</span></div>
+        <div class="mv-npc-rel-cards">{{#each npcRelations.others}}<article class="mv-npc-rel-card">
+  <div class="mv-npc-rel-person"><img src="{{image}}" alt="" loading="lazy"><div class="mv-npc-rel-person-copy"><strong>{{name}}</strong><small>{{#if party}}Equipe: {{party}}{{else}}Relacionamento extra{{/if}}</small></div>{{#unless party}}<button type="button" class="mv-npc-rel-remove" data-npc-action="relation-remove" data-id="{{key}}" title="Remover este relacionamento"><i class="fa-solid fa-trash"></i></button>{{else}}<span class="mv-npc-rel-party-tag">Party</span>{{/unless}}</div>
+  <div class="mv-npc-rel-fields">
+    <div class="mv-npc-rel-track mv-npc-rel-affection" data-npc-relation-track data-current="{{afeicao}}"><div class="mv-npc-rel-field-label"><i class="fa-solid fa-heart"></i> Afeição</div><div class="mv-npc-rel-dot-row">{{#each afeicaoDots}}<button type="button" class="mv-npc-rel-dot {{#if active}}is-active{{/if}}" data-npc-action="relation-level" data-id="{{../key}}" data-field="afeicao" data-level="{{level}}" aria-label="Afeição do NPC por {{../name}}: nível {{level}} de 3" aria-pressed="{{selected}}" title="Afeição {{level}}/3 (clique novamente para zerar)"><span></span></button>{{/each}}</div></div>
+    <div class="mv-npc-rel-track mv-npc-rel-admiration" data-npc-relation-track data-current="{{admiracao}}"><div class="mv-npc-rel-field-label"><i class="fa-solid fa-star"></i> Admiração</div><div class="mv-npc-rel-dot-row">{{#each admiracaoDots}}<button type="button" class="mv-npc-rel-dot {{#if active}}is-active{{/if}}" data-npc-action="relation-level" data-id="{{../key}}" data-field="admiracao" data-level="{{level}}" aria-label="Admiração do NPC por {{../name}}: nível {{level}} de 3" aria-pressed="{{selected}}" title="Admiração {{level}}/3 (clique novamente para zerar)"><span></span></button>{{/each}}</div></div>
+  </div>
+</article>
+{{else}}<div class="mv-npc-rel-empty">Nenhum relacionamento extra adicionado.</div>{{/each}}</div>
+        <details class="mv-npc-rel-add"><summary><i class="fa-solid fa-user-plus"></i> Adicionar relacionamento</summary><div class="mv-npc-rel-add-row"><label>Nome do personagem / NPC<input type="text" data-npc-relation-name maxlength="90" autocomplete="off" placeholder="Ex.: Mentor de infância"></label><button type="button" data-npc-action="relation-add"><i class="fa-solid fa-plus"></i> Adicionar</button></div><p>Apenas nomes são informados. Não exibimos a lista de outras fichas do mundo.</p></details>
+      </section>
+      <div class="mv-npc-rel-info"><i class="fa-solid fa-star"></i><div><strong>Maior Admiração cadastrada na Party: {{npcRelations.maxRecorded}}/3</strong><p>Em combate, considere somente os jogadores <strong>presentes na cena</strong>. Esse maior nível define a potência das Ações de Apoio do NPC para qualquer integrante do grupo. A reserva coletiva continua sendo controlada pelo mestre.</p></div></div>
+    </section>
+    {{/if}}
+    <section class="mv-npc-panel" data-npc-panel="criacao" hidden>
+      <div class="mv-npc-creation-intro"><div><h3>Configuração rápida</h3><p>A categoria sugere pontos e limites. Você pode ajustar manualmente um NPC excepcional; desvios serão sinalizados, sem apagar suas escolhas.</p></div></div>
+      <section class="mv-npc-card"><div class="mv-npc-card-head"><h3>1. Categoria e papel</h3></div>
+        <div class="mv-npc-fields-row"><p class="mv-npc-hint">Tipo: {{system.npcRole}} · Categoria: {{categoryName}}. Configure ambos no topo da ficha.</p>
+        {{#if canEdit}}<button type="button" class="mv-npc-secondary" data-npc-action="preset">Aplicar atributos sugeridos</button>{{/if}}
+        </div>
+      </section>
+      <section class="mv-npc-card"><div class="mv-npc-card-head"><h3>2. Atributos</h3><span>{{attributeTotal}} / {{attributeBudget}} pontos</span></div>
+        <div class="mv-npc-attrs-grid">{{#each attributes}}<label><span>{{label}}</span><input name="system.{{key}}" type="number" step="1" min="0" max="9999" value="{{value}}" {{#unless ../canEdit}}readonly{{/unless}}><small>{{short}} · padrão {{minimum}}–{{maximum}}</small></label>{{/each}}</div>
+        <p class="mv-npc-hint">Restantes: {{attributeRemaining}}. O total e os limites da categoria são referências. Distribuições excepcionais ficam a critério do mestre.</p>
+      </section>
+      <section class="mv-npc-card"><div class="mv-npc-card-head"><h3>3. Treinamentos e especialização</h3><span>{{trainedCount}} / {{trainedBudget}} treinadas · {{specializationUsed}} / {{specializationBudget}} extras</span></div>
+        <p class="mv-npc-hint">Perícia = ⌊Atributo ÷ 2⌋ + 2 (se treinada) + especialização. Máximo recomendado por perícia: +{{specializationCap}}.</p>
+        <label class="mv-npc-cut-label">Cortantes usa <select name="system.npcCortantesAttr" {{#unless canEdit}}disabled{{/unless}}><option value="forcanumero" {{#if cortantesForca}}selected{{/if}}>Força</option><option value="agilidadenumero" {{#if cortantesAgilidade}}selected{{/if}}>Agilidade</option></select></label>
+        <div class="mv-npc-skill-editor"><div class="mv-npc-skill-editor-head"><span>Perícia</span><span>Treinada</span><span>Especialização</span><span>Total</span></div>
+        {{#each skills}}
+          <div class="mv-npc-skill-editor-row"><span>{{label}} <small>({{attributeShort}})</small></span><label title="Treinada"><input type="checkbox" data-npc-train="{{key}}" {{#if trained}}checked{{/if}} {{#unless ../canEdit}}disabled{{/unless}}><span class="sr-only">Treinar {{label}}</span></label><input type="number" min="0" max="100" step="1" data-npc-special="{{key}}" value="{{specialization}}" aria-label="Especialização em {{label}}" {{#unless ../canEdit}}readonly{{/unless}}><strong>{{signed}}</strong></div>
+        {{/each}}
+        </div>
+      </section>
+      <section class="mv-npc-card"><div class="mv-npc-card-head"><h3>4. Máximos dos Fluxos</h3><span>Base + perícia/atributo × multiplicador</span></div>
+        <div class="mv-npc-overrides">{{#each fluxes}}<label><span>{{label}}</span><small>Calculado: {{computed}}</small><input type="number" min="0" step="1" data-npc-flux-override="{{id}}" value="{{manual}}" placeholder="Automático" aria-label="Máximo manual de {{label}}" {{#unless ../canEdit}}readonly{{/unless}}></label>{{/each}}</div>
+        <p class="mv-npc-hint">Deixe o máximo manual vazio para usar a fórmula da categoria. O valor atual não é preenchido automaticamente ao mudar de categoria; use “Restaurar Fluxos” quando desejar.</p>
+      </section>
+      {{#if errors}}<section class="mv-npc-warning"><h3><i class="fa-solid fa-triangle-exclamation"></i> Fora dos padrões da categoria</h3>{{#each errors}}<p>{{this}}</p>{{/each}}</section>{{/if}}
+    </section>
+    <section class="mv-npc-panel" data-npc-panel="apoio" hidden>
+      <section class="mv-npc-card"><div class="mv-npc-card-head"><h3><i class="fa-solid fa-handshake-angle"></i> Ações de Apoio do NPC</h3><span>{{supportCount}} cadastradas</span></div>
+        <p class="mv-npc-hint">Estas ações são próprias do NPC e diferentes de suas habilidades normais. Cada ação tem versões de Admiração 0–3. A reserva coletiva é controlada pelo mestre: 1 ação base, +1 por NPC com Admiração efetiva 2 ou 3, até 3 por rodada. Cada NPC só age uma vez por rodada.</p>
+        {{#each supportAbilities}}
+          <details class="mv-npc-ability mv-npc-support"><summary><span class="mv-npc-ability-name">{{name}}</span><span class="mv-npc-action-tag">Apoio 0–3</span></summary>
+          {{#if trigger}}<p><b>Momento:</b> {{trigger}}</p>{{/if}}
+          <div class="mv-npc-support-levels">{{#each levels}}<div class="mv-npc-support-level"><p><b>Nível {{number}}:</b> {{description}}</p>{{#if ../../canEdit}}<div class="mv-npc-support-controls"><button type="button" data-npc-action="edit-support-engine" data-id="{{../id}}" data-level="{{number}}"><i class="fa-solid fa-gears"></i> {{#if ready}}Editar motor{{else}}Configurar motor{{/if}}</button><button type="button" data-npc-action="use-support-engine" data-id="{{../id}}" data-level="{{number}}" {{#unless ready}}disabled{{/unless}}><i class="fa-solid fa-play"></i> Usar Nv. {{number}}</button></div>{{/if}}</div>{{/each}}</div>
+          {{#if ../canEdit}}<div class="mv-npc-ability-controls"><span class="mv-npc-hint">Motor próprio em cada nível de Admiração.</span><button type="button" data-npc-action="edit-support" data-id="{{id}}">Editar</button><button type="button" data-npc-action="remove-support" data-id="{{id}}" title="Excluir"><i class="fa-solid fa-trash"></i></button></div>{{/if}}</details>
+        {{else}}<p class="mv-npc-empty">Nenhuma Ação de Apoio cadastrada. Você pode preencher os quatro níveis quando criar as habilidades deste NPC.</p>{{/each}}
+        {{#if canEdit}}<button type="button" class="mv-npc-add" data-npc-action="add-support"><i class="fa-solid fa-plus"></i> Adicionar Ação de Apoio</button>{{/if}}
+      </section>
+    </section>
+  </main>
+</div>

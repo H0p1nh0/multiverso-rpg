@@ -1,0 +1,11 @@
+Multiverso RPG v1.0.14 — Correções NPC
+
+1. Categoria e Tipo de NPC no cabeçalho.
+2. Os seis atributos visíveis na aba Combate e clicáveis para teste.
+3. As 22 perícias da aba Combate iniciam o teste nativo do Multiverso. NPCs usam valor integral; jogadores preservam o limite anterior.
+4. Novas habilidades são Skills/Técnicas reais; configura-se o motor original completo.
+5. Habilidades da v1.0.13 continuam intactas até conversão manual pelo botão Conectar ao motor; a conversão mantém descrições, custos e fórmulas anteriores como referência.
+6. Cada nível 0–3 de Ações de Apoio tem seu próprio Item Skill/Técnica configurável e executável pelo motor original. A reserva coletiva de apoio continua manual; NPCs de apoio não consomem Ação Principal na ativação.
+7. PV, STA, Mana, SAN, cálculos, diários, Afinidades, Party e ficha de jogadores preservados.
+
+Validação no Foundry real necessária, especialmente em efeitos avançados que dependem de condições de combate ou de iniciativa.

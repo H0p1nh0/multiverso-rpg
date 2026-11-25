@@ -1,0 +1,51 @@
+MULTIVERSO RPG — v1.0.3 | CORREÇÃO CONSERVADORA DO DIAGNÓSTICO
+================================================================
+Base: ZIP da v1.0.2 enviado por Hope.
+Compatibilidade declarada: Foundry VTT 14.
+
+ALTERAÇÃO PRINCIPAL
+- O motor de uso e o botão "Testar habilidade" consultam agora uma função
+  compartilhada para selecionar a rota de execução: próprio personagem,
+  efeito externo imediato, múltiplos alvos, efeitos mantidos, execução
+  composta, card externo e card aberto sem alvo.
+- O diagnóstico não acusa mais como "receptor incompatível" um efeito que
+  é tratado por uma dessas rotas. Exemplo: dano em alvo externo + perda
+  de PV no usuário numa mesma Técnica.
+- As mensagens que pertencem especificamente à rota externa avançada e
+  ao card externo usam a mesma lista de erros liberados do executor.
+- A prévia informa a rota prevista e continua SEM executar efeitos ou gastar
+  recursos. Continua exibindo incompatibilidades reais, inclusive efeitos
+  de ações diferentes e efeitos imediatos não aceitos pelo executor composto.
+
+O QUE FOI PRESERVADO
+- Motores de combate, dano, itens, recursos, turno, custos, efeitos,
+  gatilhos existentes e Hoshuko específicos, sem mudança de regras.
+- Não foi criado código exclusivo para Cortes de Pressão ou Shein.
+- Configurações e personagens do mundo não são alterados por este ZIP.
+
+O QUE AINDA NÃO FOI IMPLEMENTADO (ETAPAS FUTURAS)
+- Eventos universais com contexto, gatilhos configuráveis, marcas e vínculos.
+- Custos distintos por resultado, ataques sequenciais, invocações e
+  transferência de dano; remoção da exceção Hoshuko.
+- Ação simultânea de efeitos com tipos de ação distintos permanece bloqueada.
+- O diagnóstico não substitui o teste de uso real no Foundry.
+
+TESTES LOCAIS
+- tests/ability-routes-v1.0.3.mjs cobre seleção de executores e diagnóstico.
+- Verificação de sintaxe e importações de módulos, integridade de ZIP.
+- O Foundry VTT 14 não foi executado neste ambiente.
+
+ROTEIRO PARA HOPE
+1) Salvar a v1.0.2 e um backup do mundo.
+2) Instalar a v1.0.3, abrir personagem de TESTE.
+3) Cadastrar temporariamente uma habilidade com dois efeitos:
+   (a) Dano 1d6 no alvo escolhido, (b) Alteração de fluxo subtrair 1d3
+   do PV do próprio personagem. Mesma ação em ambos os efeitos.
+4) Abrir Testar habilidade. O diagnóstico deverá indicar "Execução
+   composta" e NÃO exibir "O receptor selecionado não é compatível".
+5) NÃO executar a habilidade em personagens reais: o cadastro completo de
+   Cortes de Pressão ainda depende do motor universal futuro.
+6) Testar uma habilidade com ações diferentes e confirmar que o diagnóstico
+   continua apontando incompatibilidade.
+
+O ZIP inclui a pasta multiverso-rpg/ e está pronto para instalação completa.

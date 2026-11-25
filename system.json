@@ -1,0 +1,56 @@
+{
+  "id": "multiverso-rpg",
+  "title": "Multiverso RPG",
+  "description": "Sistema Multiverso RPG para Foundry VTT 14.",
+  "version": "1.0.20",
+  "compatibility": {
+    "minimum": "14",
+    "verified": "14",
+    "maximum": "14"
+  },
+  "authors": [
+    {
+      "name": "Hope"
+    }
+  ],
+  "esmodules": [
+    "main.mjs"
+  ],
+  "languages": [
+    {
+      "lang": "pt-BR",
+      "name": "Português (Brasil)",
+      "path": "lang/pt-BR.json"
+    }
+  ],
+  "documentTypes": {
+    "Actor": {
+      "personagem": {},
+      "npc": {}
+    },
+    "Item": {
+      "equipamento": {},
+      "skill": {},
+      "tecnica": {},
+      "classe": {},
+      "subclasse": {},
+      "especie": {},
+      "habilidadeClasse": {},
+      "habilidadeSubclasse": {},
+      "habilidadeEspecie": {},
+      "vantagem": {}
+    }
+  },
+  "type": "system",
+  "styles": [
+    "styles/personagem.css",
+    "styles/combate-legado.css",
+    "styles/ability-diagnostics.css",
+    "styles/party-manager-v1.0.7.css",
+    "styles/diary-manager-v1.0.9.css",
+    "styles/affinity-journals-v1.0.12.css",
+    "styles/npc-v1.0.18.css",
+    "styles/npc-defenses-v1.0.20.css"
+  ],
+  "socket": true
+}
