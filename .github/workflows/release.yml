@@ -1,0 +1,53 @@
+name: Publicar sistema Foundry
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: foundry-release
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Executar testes
+        run: node --test --test-concurrency=1 tests/*.mjs
+      - name: Montar pacote
+        shell: pwsh
+        run: ./scripts/package.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: foundry-system
+          path: |
+            dist/system.json
+            dist/multiverso-rpg.zip
+          if-no-files-found: error
+
+  publish:
+    needs: validate
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: foundry-system
+          path: dist
+      - name: Criar Release pública
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          tag="v$(jq -er '.version' dist/system.json)"
+          gh release create "$tag" dist/system.json dist/multiverso-rpg.zip \
+            --target "$GITHUB_SHA" --title "Multiverso RPG $tag" --generate-notes --latest
